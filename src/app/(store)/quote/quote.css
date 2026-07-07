@@ -1,0 +1,101 @@
+/* Quote / RFQ page-specific styles, scoped under .pg-quote */
+
+/* banner */
+.pg-quote .qhero { position: relative; color: #fff; overflow: hidden; }
+.pg-quote .qhero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pg-quote .qhero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,30,46,.94), rgba(10,30,46,.5)); }
+.pg-quote .qhero .wrap { position: relative; z-index: 2; padding: 48px 0; }
+.pg-quote .qhero .eyebrow { color: var(--green-500); font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.pg-quote .qhero h1 { color: #fff; font-size: clamp(2rem,3.6vw,2.9rem); margin: 12px 0 10px; max-width: 18ch; }
+.pg-quote .qhero p { color: #d6e0e6; max-width: 56ch; }
+.pg-quote .reassure { display: flex; gap: 26px; margin-top: 22px; flex-wrap: wrap; }
+.pg-quote .reassure div { display: flex; align-items: center; gap: 9px; font-size: .88rem; color: #e4ebef; }
+.pg-quote .reassure svg { width: 18px; height: 18px; stroke: var(--green-500); fill: none; stroke-width: 1.9; }
+
+/* layout */
+.pg-quote .rfq { display: grid; grid-template-columns: 1fr 380px; gap: 36px; padding: 44px 0 70px; }
+
+/* stepper */
+.pg-quote .stepper { display: flex; gap: 6px; margin-bottom: 28px; flex-wrap: wrap; }
+.pg-quote .st { display: flex; align-items: center; gap: 9px; padding: 8px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600; color: var(--slate); background: var(--white); border: 1px solid var(--border); }
+.pg-quote .st .n { width: 22px; height: 22px; border-radius: 50%; background: var(--navy-50); display: flex; align-items: center; justify-content: center; font-size: .76rem; color: var(--slate); }
+.pg-quote .st.done { color: var(--green-700); border-color: var(--green-50); background: var(--green-50); }
+.pg-quote .st.done .n { background: var(--green-600); color: #fff; }
+.pg-quote .st.active { color: #fff; background: var(--ink); border-color: var(--ink); }
+.pg-quote .st.active .n { background: #fff; color: var(--ink); }
+
+/* form card */
+.pg-quote .formcard { background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); padding: 28px; }
+.pg-quote .formcard h2 { font-size: 1.35rem; margin-bottom: 6px; }
+.pg-quote .formcard .lede { color: var(--slate); font-size: .92rem; margin-bottom: 22px; }
+.pg-quote .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pg-quote .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.pg-quote .field { margin-bottom: 18px; }
+.pg-quote .field label { font-size: .82rem; font-weight: 600; display: block; margin-bottom: 7px; }
+.pg-quote .field .hint { font-size: .76rem; color: var(--slate); font-weight: 400; margin-left: 6px; }
+.pg-quote .input,
+.pg-quote select.input,
+.pg-quote textarea.input { width: 100%; border: 1.5px solid var(--border); border-radius: var(--r-btn); padding: 12px 14px; font-family: var(--font-ui); font-size: .92rem; background: #fff; color: var(--ink); }
+.pg-quote .input:focus { outline: none; border-color: var(--green-500); box-shadow: 0 0 0 3px rgba(30,158,92,.15); }
+.pg-quote textarea.input { resize: vertical; min-height: 90px; }
+.pg-quote .opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.pg-quote .opt { border: 1.5px solid var(--border); border-radius: var(--r-btn); padding: 9px 15px; font-size: .86rem; font-weight: 500; cursor: pointer; background: #fff; }
+.pg-quote .opt.on { border-color: var(--ink); background: var(--ink); color: #fff; }
+.pg-quote .sw { width: 32px; height: 32px; border-radius: 50%; padding: 0; position: relative; border: 1.5px solid var(--border); cursor: pointer; }
+.pg-quote .sw.on { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ink); }
+.pg-quote .sizes { display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; }
+.pg-quote .sizes .sz { text-align: center; }
+.pg-quote .sizes .sz span { font-size: .78rem; color: var(--slate); display: block; margin-bottom: 5px; font-weight: 600; }
+.pg-quote .sizes .sz input { width: 100%; text-align: center; border: 1.5px solid var(--border); border-radius: var(--r-btn); padding: 9px 4px; font-family: var(--font-ui); font-weight: 600; }
+.pg-quote .certchecks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pg-quote .cc { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: var(--r-btn); padding: 11px 14px; cursor: pointer; font-size: .88rem; font-weight: 500; }
+.pg-quote .cc input { appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 4px; position: relative; flex: none; }
+.pg-quote .cc input:checked { background: var(--green-600); border-color: var(--green-600); }
+.pg-quote .cc input:checked::after { content: ""; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.pg-quote .dropzone { border: 2px dashed var(--border); border-radius: var(--r-card); padding: 26px; text-align: center; color: var(--slate); cursor: pointer; transition: .15s; }
+.pg-quote .dropzone:hover { border-color: var(--green-500); background: var(--green-50); }
+.pg-quote .dropzone svg { width: 30px; height: 30px; stroke: var(--slate); fill: none; stroke-width: 1.6; margin-bottom: 8px; }
+.pg-quote .dropzone b { color: var(--ink); }
+.pg-quote .filechip { display: inline-flex; align-items: center; gap: 8px; background: var(--navy-50); border-radius: 999px; padding: 6px 12px; font-size: .82rem; font-weight: 500; margin-top: 10px; }
+.pg-quote .formnav { display: flex; justify-content: space-between; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); }
+
+/* quote cart */
+.pg-quote .qcart { position: sticky; top: 90px; align-self: start; background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); overflow: hidden; }
+.pg-quote .qcart .head { background: var(--ink); color: #fff; padding: 18px 20px; display: flex; align-items: center; gap: 10px; }
+.pg-quote .qcart .head svg { width: 20px; height: 20px; stroke: var(--green-500); fill: none; stroke-width: 1.8; }
+.pg-quote .qcart .head b { font-size: 1rem; }
+.pg-quote .qcart .head span { margin-left: auto; background: rgba(255,255,255,.15); border-radius: 999px; padding: 2px 10px; font-size: .78rem; font-weight: 600; }
+.pg-quote .qline { display: flex; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.pg-quote .qline img { width: 56px; height: 70px; object-fit: cover; border-radius: 8px; flex: none; background: var(--paper); }
+.pg-quote .qline h4 { font-family: var(--font-ui); font-size: .92rem; font-weight: 600; }
+.pg-quote .qline .qs { font-size: .78rem; color: var(--slate); margin-top: 2px; }
+.pg-quote .qline .qq { font-family: var(--font-mono); font-size: .82rem; margin-top: 4px; }
+.pg-quote .qline .rm { margin-left: auto; color: var(--slate); cursor: pointer; font-size: 1.1rem; align-self: flex-start; }
+.pg-quote .qcart .totals { padding: 18px 20px; font-size: .88rem; }
+.pg-quote .qcart .totals .r { display: flex; justify-content: space-between; padding: 5px 0; color: var(--slate); }
+.pg-quote .qcart .totals .r b { color: var(--ink); }
+.pg-quote .qcart .foot { padding: 0 20px 20px; }
+.pg-quote .qnote { font-size: .76rem; color: var(--slate); text-align: center; margin-top: 12px; display: flex; align-items: center; gap: 6px; justify-content: center; }
+.pg-quote .qnote svg { width: 14px; height: 14px; stroke: var(--green-600); fill: none; stroke-width: 2; }
+
+/* success modal */
+.pg-quote .overlay { position: fixed; inset: 0; background: rgba(10,30,46,.55); backdrop-filter: blur(4px); z-index: 300; display: none; align-items: center; justify-content: center; padding: 24px; }
+.pg-quote .overlay.on { display: flex; }
+.pg-quote .success { background: #fff; border-radius: 16px; max-width: 460px; width: 100%; padding: 38px; text-align: center; box-shadow: 0 30px 80px -20px rgba(12,36,54,.5); }
+.pg-quote .success .ok { width: 66px; height: 66px; border-radius: 50%; background: var(--green-50); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+.pg-quote .success .ok svg { width: 32px; height: 32px; stroke: var(--green-600); fill: none; stroke-width: 2.4; }
+.pg-quote .success h2 { font-size: 1.6rem; margin-bottom: 8px; }
+.pg-quote .success p { color: var(--slate); font-size: .94rem; }
+.pg-quote .refbox { background: var(--paper); border: 1px dashed var(--border); border-radius: 10px; padding: 14px; margin: 20px 0; font-family: var(--font-mono); font-weight: 500; }
+.pg-quote .refbox b { font-size: 1.2rem; color: var(--ink); letter-spacing: .04em; }
+.pg-quote .upsell { background: var(--navy-50); border-radius: 10px; padding: 14px; font-size: .84rem; margin-top: 8px; }
+
+@media (max-width: 960px) {
+  .pg-quote .rfq { grid-template-columns: 1fr; }
+  .pg-quote .qcart { position: static; }
+  .pg-quote .grid2, .pg-quote .grid3 { grid-template-columns: 1fr; }
+  .pg-quote .certchecks { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .pg-quote .sizes { grid-template-columns: repeat(3,1fr); }
+}

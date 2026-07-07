@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123A54'/%3E%3Cpath d='M10 22V10h6a5 5 0 010 10h-4l6 6' fill='none' stroke='%231E9E5C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Admin — KEYA Knit Composite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0C2436;--navy-800:#0A1E2E;--navy-900:#07161f;--navy-600:#123A54;--navy-50:#E7EDF1;--green-600:#137A47;--green-700:#0F633A;--green-500:#1E9E5C;--green-50:#E4F3EA;--paper:#F4F6F7;--white:#fff;--slate:#5A6B76;--border:#E2E6E9;--amber-600:#8A5A0E;--amber-50:#FBF1DD;--danger:#B42318;--danger-50:#FBE9E7;--font-display:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-ui:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-mono:'JetBrains Mono','IBM Plex Mono',monospace;--r-card:10px;--r-btn:8px;--shadow-md:0 6px 20px -8px rgba(12,36,54,.14);--sb:236px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-ui);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+.tnum{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;font-weight:600;font-size:.86rem;border-radius:var(--r-btn);padding:9px 15px;border:1.5px solid transparent;cursor:pointer;font-family:var(--font-ui);transition:.15s}
+.btn-buy{background:var(--green-600);color:#fff}.btn-buy:hover{background:var(--green-700)}
+.btn-quote{background:var(--ink);color:#fff}.btn-quote:hover{background:var(--navy-600)}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--border)}.btn-outline:hover{border-color:var(--ink)}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+/* shell */
+.app{display:grid;grid-template-columns:var(--sb) 1fr;min-height:100vh}
+.sidebar{background:var(--navy-900);color:#9fb0ba;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:18px 14px}
+.sidebar .brand{display:flex;align-items:center;gap:9px;color:#fff;font-family:var(--font-display);font-weight:800;font-size:1.3rem;padding:6px 8px 4px}
+.sidebar .brand .tag{font-size:.55rem;letter-spacing:.2em;color:#5f7482;font-weight:600;font-family:var(--font-ui)}
+.sidebar .adm{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#5f7482;padding:16px 10px 8px;font-weight:600}
+.sidebar nav{display:flex;flex-direction:column;gap:2px}
+.sidebar nav button{display:flex;align-items:center;gap:11px;padding:10px 12px;background:none;border:none;border-radius:var(--r-btn);color:#9fb0ba;cursor:pointer;font-family:var(--font-ui);font-size:.9rem;font-weight:500;text-align:left;width:100%}
+.sidebar nav button:hover{background:rgba(255,255,255,.05);color:#fff}
+.sidebar nav button.on{background:var(--green-600);color:#fff}
+.sidebar nav button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.sidebar nav button .b{margin-left:auto;background:var(--danger);color:#fff;font-size:.68rem;font-weight:700;border-radius:999px;padding:1px 7px}
+.sidebar nav button.on .b{background:rgba(255,255,255,.25)}
+.sidebar .user{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 10px;border-top:1px solid rgba(255,255,255,.08)}
+.sidebar .user .av{width:34px;height:34px;border-radius:50%;background:var(--green-600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+.sidebar .user b{color:#fff;font-size:.85rem;display:block}.sidebar .user span{font-size:.72rem}
+/* main */
+.main{padding:0}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:16px 30px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20}
+.topbar h1{font-size:1.35rem}
+.topbar .search{margin-left:auto;position:relative}
+.topbar .search input{border:1.5px solid var(--border);border-radius:999px;padding:9px 15px 9px 36px;font-family:var(--font-ui);font-size:.86rem;width:240px}
+.topbar .search svg{position:absolute;left:12px;top:9px;width:16px;height:16px;stroke:var(--slate);fill:none;stroke-width:2}
+.content{padding:26px 30px 60px}
+.panel{display:none}.panel.on{display:block}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:18px}
+.kpi .lab{font-size:.8rem;color:var(--slate);display:flex;align-items:center;gap:7px}
+.kpi .lab svg{width:15px;height:15px;stroke:var(--green-600);fill:none;stroke-width:2}
+.kpi .n{font-family:var(--font-display);font-weight:700;font-size:1.9rem;margin-top:8px;line-height:1}
+.kpi .d{font-size:.76rem;margin-top:6px;font-weight:600}
+.kpi .d.up{color:var(--green-700)}.kpi .d.down{color:var(--danger)}
+/* chart row */
+.chartrow{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:22px}
+.cbox{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px}
+.cbox h3{font-size:1rem;margin-bottom:4px}.cbox .cs{font-size:.8rem;color:var(--slate);margin-bottom:18px}
+/* funnel */
+.funnel{display:flex;flex-direction:column;gap:9px}
+.fstage{display:flex;align-items:center;gap:12px}
+.fstage .fl{width:120px;font-size:.82rem;color:var(--slate)}
+.fstage .bar{flex:1;height:26px;border-radius:6px;background:var(--green-600);display:flex;align-items:center;padding:0 10px;color:#fff;font-size:.78rem;font-weight:600}
+.fstage:nth-child(2) .bar{background:#1a8a52}.fstage:nth-child(3) .bar{background:var(--ink)}.fstage:nth-child(4) .bar{background:var(--navy-600)}.fstage:nth-child(5) .bar{background:var(--amber-600)}
+/* bar chart */
+.bars{display:flex;align-items:flex-end;gap:12px;height:170px;padding-top:10px}
+.bars .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.bars .col .bar{width:100%;max-width:34px;background:linear-gradient(var(--green-500),var(--green-600));border-radius:6px 6px 0 0}
+.bars .col small{font-size:.72rem;color:var(--slate)}
+/* donut / markets */
+.mklist{display:flex;flex-direction:column;gap:12px}
+.mk{display:flex;align-items:center;gap:10px;font-size:.85rem}
+.mk .track{flex:1;height:8px;border-radius:4px;background:var(--navy-50);overflow:hidden}
+.mk .fill{height:100%;background:var(--green-600);border-radius:4px}
+.mk b{width:44px;text-align:right}
+/* tables */
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--border);background:#fff;border-radius:999px;padding:7px 14px;font-size:.82rem;font-weight:500;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;font-size:.86rem}
+.tbl th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);padding:12px 16px;border-bottom:1px solid var(--border);background:#fbfcfc}
+.tbl td{padding:14px 16px;border-bottom:1px solid var(--border)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tbody tr{cursor:pointer}.tbl tbody tr:hover{background:var(--paper)}
+.ref{font-family:var(--font-mono);font-size:.82rem;font-weight:500}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.stat{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.stat.new{background:var(--navy-50);color:var(--navy-600)}
+.stat.review{background:var(--amber-50);color:var(--amber-600)}
+.stat.ready{background:var(--green-50);color:var(--green-700)}
+.stat.won{background:var(--green-600);color:#fff}
+.sla{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:600}
+.sla::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.sla.ok{color:var(--green-700)}.sla.warn{color:var(--amber-600)}.sla.late{color:var(--danger)}
+/* quote builder */
+.qb-back{background:none;border:none;color:var(--slate);cursor:pointer;font-weight:600;font-size:.86rem;display:flex;align-items:center;gap:6px;margin-bottom:14px;font-family:var(--font-ui)}
+.qb-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.qb-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.qb-head{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px;margin-bottom:16px;display:flex;gap:20px;flex-wrap:wrap}
+.qb-head .m .k{font-size:.72rem;color:var(--slate);text-transform:uppercase;letter-spacing:.05em}.qb-head .m .v{font-weight:600;margin-top:3px}
+.qb-line{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:16px;margin-bottom:12px}
+.qb-line .lh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.qb-line img{width:40px;height:50px;object-fit:cover;border-radius:6px;background:var(--paper)}
+.qb-line .lh b{font-size:.95rem}.qb-line .lh .sp{font-size:.78rem;color:var(--slate)}
+.qb-inputs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.qb-inputs label{font-size:.72rem;color:var(--slate);display:block;margin-bottom:4px}
+.qb-inputs input{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:8px 10px;font-family:var(--font-ui);font-weight:600;font-size:.86rem}
+.qb-side{align-self:start;position:sticky;top:80px}
+.qb-side .box{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:18px;margin-bottom:12px}
+.qb-side .r{display:flex;justify-content:space-between;padding:6px 0;font-size:.86rem;color:var(--slate)}.qb-side .r b{color:var(--ink)}
+.qb-side .r.g{border-top:1px solid var(--border);margin-top:6px;padding-top:12px;font-size:1.05rem}.qb-side .r.g b{font-size:1.2rem}
+.qb-side .field{margin-bottom:10px}.qb-side .field label{font-size:.76rem;font-weight:600;display:block;margin-bottom:5px}
+.qb-side .field input,.qb-side .field select{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:8px 10px;font-family:var(--font-ui);font-size:.84rem}
+.ver{font-size:.72rem;color:var(--slate);font-family:var(--font-mono)}
+.fmode{font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px}
+.fmode.stock{background:var(--green-50);color:var(--green-700)}.fmode.mto{background:var(--amber-50);color:var(--amber-600)}.fmode.hy{background:var(--navy-50);color:var(--navy-600)}
+@media(max-width:1080px){.kpis{grid-template-columns:1fr 1fr}.chartrow{grid-template-columns:1fr}.qb-grid{grid-template-columns:1fr}.qb-side{position:static}}
+@media(max-width:820px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.sidebar nav{flex-direction:row;flex-wrap:wrap}.sidebar .adm,.sidebar .user{display:none}.qb-inputs{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="#123A54"/><path d="M10 22V10h6a5 5 0 010 10h-4l6 6" stroke="#1E9E5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div>KEYA<div class="tag">ADMIN CONSOLE</div></div></div>
+    <div class="adm">Operations</div>
+    <nav>
+      <button data-p="dash" class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</button>
+      <button data-p="inbox"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M4 8l8 5 8-5"/></svg>RFQ Inbox <span class="b">7</span></button>
+      <button data-p="products"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4 8 4 8-4zM4 7v10l8 4 8-4V7"/></svg>Products</button>
+      <button data-p="orders"><svg viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6z"/><path d="M9 12h7M9 16h7"/></svg>Orders</button>
+      <button data-p="customers"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0112 0"/><circle cx="17" cy="9" r="2.5"/></svg>Customers</button>
+    </nav>
+    <div class="user"><span class="av">S</span><div><b>S. Rahman</b><span>Sales manager</span></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <h1 id="ptitle">Dashboard</h1>
+      <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input placeholder="Search RFQs, orders, buyers…"></div>
+      <a class="btn btn-outline" href="../index.html"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Storefront</a>
+    </div>
+    <div class="content">
+      <!-- AD1 dashboard -->
+      <section class="panel on" id="p-dash">
+        <div class="kpis">
+          <div class="kpi"><div class="lab"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M4 8l8 5 8-5"/></svg>Open RFQs</div><div class="n tnum">23</div><div class="d up">▲ 12% vs last week</div></div>
+          <div class="kpi"><div class="lab"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 8h9a3 3 0 010 6H6"/></svg>Quoted value</div><div class="n tnum">$412K</div><div class="d up">▲ 8% MTD</div></div>
+          <div class="kpi"><div class="lab"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Win rate</div><div class="n tnum">34%</div><div class="d up">▲ 3 pts</div></div>
+          <div class="kpi"><div class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Avg. response</div><div class="n tnum">31h</div><div class="d down">▼ under 48h SLA</div></div>
+        </div>
+        <div class="chartrow">
+          <div class="cbox">
+            <h3>RFQ funnel</h3><div class="cs">Conversion pipeline · last 30 days</div>
+            <div class="funnel">
+              <div class="fstage"><span class="fl">Submitted</span><div class="bar" style="width:100%">148</div></div>
+              <div class="fstage"><span class="fl">Under review</span><div class="bar" style="width:78%">116</div></div>
+              <div class="fstage"><span class="fl">Quote sent</span><div class="bar" style="width:61%">90</div></div>
+              <div class="fstage"><span class="fl">Accepted</span><div class="bar" style="width:34%">50</div></div>
+              <div class="fstage"><span class="fl">Converted</span><div class="bar" style="width:27%">40</div></div>
+            </div>
+          </div>
+          <div class="cbox">
+            <h3>Top export markets</h3><div class="cs">Quoted value share</div>
+            <div class="mklist">
+              <div class="mk"><span style="width:74px">Germany</span><div class="track"><div class="fill" style="width:82%"></div></div><b class="tnum">24%</b></div>
+              <div class="mk"><span style="width:74px">UK</span><div class="track"><div class="fill" style="width:68%"></div></div><b class="tnum">19%</b></div>
+              <div class="mk"><span style="width:74px">USA</span><div class="track"><div class="fill" style="width:55%"></div></div><b class="tnum">16%</b></div>
+              <div class="mk"><span style="width:74px">Sweden</span><div class="track"><div class="fill" style="width:40%"></div></div><b class="tnum">11%</b></div>
+              <div class="mk"><span style="width:74px">France</span><div class="track"><div class="fill" style="width:32%"></div></div><b class="tnum">9%</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="cbox">
+          <h3>Sales &amp; quoted value</h3><div class="cs">Last 8 weeks (USD thousands)</div>
+          <div class="bars">
+            <div class="col"><div class="bar" style="height:40%"></div><small>W1</small></div>
+            <div class="col"><div class="bar" style="height:55%"></div><small>W2</small></div>
+            <div class="col"><div class="bar" style="height:48%"></div><small>W3</small></div>
+            <div class="col"><div class="bar" style="height:70%"></div><small>W4</small></div>
+            <div class="col"><div class="bar" style="height:62%"></div><small>W5</small></div>
+            <div class="col"><div class="bar" style="height:85%"></div><small>W6</small></div>
+            <div class="col"><div class="bar" style="height:78%"></div><small>W7</small></div>
+            <div class="col"><div class="bar" style="height:96%"></div><small>W8</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AD2 RFQ inbox -->
+      <section class="panel" id="p-inbox">
+        <div class="toolbar">
+          <span class="chip on">All · 23</span><span class="chip">New</span><span class="chip">Under review</span><span class="chip">Quote sent</span>
+          <span class="chip">🌍 Country</span><span class="chip">Buyer type</span><span class="chip" style="margin-left:auto">Sort: SLA aging ▾</span>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Reference</th><th>Buyer</th><th>Country</th><th class="num">Lines / Qty</th><th class="num">Est. value</th><th>Status</th><th>SLA</th></tr></thead>
+          <tbody>
+            <tr onclick="openQB()"><td class="ref">RFQ-2026-04871</td><td>Nordic Apparel AB</td><td>🇸🇪 Sweden</td><td class="num">3 · 4,300</td><td class="num">$27,520</td><td><span class="stat ready">Quote ready</span></td><td><span class="sla ok">On time · 6h left</span></td></tr>
+            <tr onclick="openQB()"><td class="ref">RFQ-2026-04863</td><td>Meridian Retail Group</td><td>🇬🇧 UK</td><td class="num">5 · 12,000</td><td class="num">—</td><td><span class="stat review">Under review</span></td><td><span class="sla warn">Due in 4h</span></td></tr>
+            <tr onclick="openQB()"><td class="ref">RFQ-2026-04858</td><td>Atlas Clothing Co.</td><td>🇺🇸 USA</td><td class="num">2 · 6,000</td><td class="num">—</td><td><span class="stat new">New</span></td><td><span class="sla late">Overdue · 3h</span></td></tr>
+            <tr onclick="openQB()"><td class="ref">RFQ-2026-04851</td><td>Hafen Textil GmbH</td><td>🇩🇪 Germany</td><td class="num">4 · 9,500</td><td class="num">$61,750</td><td><span class="stat ready">Quote ready</span></td><td><span class="sla ok">On time</span></td></tr>
+            <tr onclick="openQB()"><td class="ref">RFQ-2026-04844</td><td>La Moda Sourcing</td><td>🇫🇷 France</td><td class="num">1 · 2,500</td><td class="num">—</td><td><span class="stat new">New</span></td><td><span class="sla ok">On time · 22h</span></td></tr>
+            <tr onclick="openQB()"><td class="ref">RFQ-2026-04839</td><td>Southern Cross Wear</td><td>🇦🇺 Australia</td><td class="num">6 · 18,000</td><td class="num">$94,200</td><td><span class="stat won">Converted</span></td><td><span class="sla ok">Closed</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- AD3 RFQ detail → quote builder -->
+      <section class="panel" id="p-qb">
+        <button class="qb-back" onclick="show('inbox')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Back to inbox</button>
+        <div class="qb-head">
+          <div class="m"><div class="k">Reference</div><div class="v ref">RFQ-2026-04871</div></div>
+          <div class="m"><div class="k">Buyer</div><div class="v">Nordic Apparel AB · 🇸🇪</div></div>
+          <div class="m"><div class="k">Received</div><div class="v">4 Jul 2026</div></div>
+          <div class="m"><div class="k">Version</div><div class="v ver">v2 · revised</div></div>
+          <div class="m" style="margin-left:auto"><div class="k">Buyer type</div><div class="v"><span class="stat ready">Verified</span></div></div>
+        </div>
+        <div class="qb-grid">
+          <div>
+            <div class="qb-line">
+              <div class="lh"><img src="/design/assets/product/tshirt-navy-v1.png" alt=""><div><b>Heavyweight Crew Tee</b> <span class="fmode stock">In stock</span><div class="sp">Cotton 220 GSM · Navy, Ecru · OEKO-TEX · Regular</div></div></div>
+              <div class="qb-inputs">
+                <div><label>Qty</label><input value="2,000"></div><div><label>Unit price $</label><input value="6.40"></div><div><label>Lead time (d)</label><input value="45"></div><div><label>Line total</label><input value="12,800" style="background:var(--paper)"></div>
+              </div>
+            </div>
+            <div class="qb-line">
+              <div class="lh"><img src="/design/assets/product/hoodie-slate-v1.png" alt=""><div><b>Brushed Pullover Hoodie</b> <span class="fmode mto">Made to order</span><div class="sp">Cotton/Poly 320 GSM · Slate · Private label</div></div></div>
+              <div class="qb-inputs">
+                <div><label>Qty</label><input value="800"></div><div><label>Unit price $</label><input value="11.90"></div><div><label>Lead time (d)</label><input value="55"></div><div><label>Line total</label><input value="9,520" style="background:var(--paper)"></div>
+              </div>
+            </div>
+            <div class="qb-line">
+              <div class="lh"><img src="/design/assets/product/baby-bodysuit-v1.png" alt=""><div><b>Organic Cotton Bodysuit</b> <span class="fmode hy">Hybrid</span><div class="sp">GOTS 180 GSM · Cream</div></div></div>
+              <div class="qb-inputs">
+                <div><label>Qty</label><input value="1,500"></div><div><label>Unit price $</label><input value="3.47"></div><div><label>Lead time (d)</label><input value="50"></div><div><label>Line total</label><input value="5,200" style="background:var(--paper)"></div>
+              </div>
+            </div>
+          </div>
+          <aside class="qb-side">
+            <div class="box">
+              <div class="r"><span>Total quantity</span><b class="tnum">4,300 pcs</b></div>
+              <div class="r"><span>Lines</span><b>3</b></div>
+              <div class="r g"><span>Quote total (FOB)</span><b class="tnum">$27,520</b></div>
+            </div>
+            <div class="box">
+              <div class="field"><label>Incoterms</label><select><option>FOB Chattogram</option><option>CIF</option><option>DDP</option></select></div>
+              <div class="field"><label>Validity</label><select><option>14 days</option><option>30 days</option><option>7 days</option></select></div>
+              <div class="field"><label>Payment terms</label><select><option>30% advance, 70% on B/L</option><option>L/C at sight</option><option>NET 30 (verified)</option></select></div>
+              <button class="btn btn-buy" style="width:100%;margin-top:6px">Send quote to buyer</button>
+              <button class="btn btn-outline" style="width:100%;margin-top:8px">Save as v3 draft</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- AD4 products & inventory -->
+      <section class="panel" id="p-products">
+        <div class="toolbar">
+          <span class="chip on">All products</span><span class="chip">In stock</span><span class="chip">Made to order</span><span class="chip">Hybrid</span>
+          <span class="chip" style="margin-left:auto"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Add product</span>
+          <span class="chip">Import CSV</span>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Product</th><th>SKU</th><th>Fulfilment</th><th class="num">MOQ</th><th class="num">Stock</th><th class="num">Retail $</th><th class="num">From $</th></tr></thead>
+          <tbody>
+            <tr><td>Heavyweight Crew Tee</td><td class="ref">KKC-TEE-220</td><td><span class="fmode stock">In stock</span></td><td class="num">500</td><td class="num">4,200</td><td class="num">18.00</td><td class="num">6.40</td></tr>
+            <tr><td>Piqué Polo Shirt</td><td class="ref">KKC-POL-210</td><td><span class="fmode hy">Hybrid</span></td><td class="num">500</td><td class="num">1,850</td><td class="num">24.00</td><td class="num">8.10</td></tr>
+            <tr><td>Brushed Pullover Hoodie</td><td class="ref">KKC-HOO-320</td><td><span class="fmode mto">Made to order</span></td><td class="num">300</td><td class="num">—</td><td class="num">34.00</td><td class="num">11.90</td></tr>
+            <tr><td>Organic Cotton Bodysuit</td><td class="ref">KKC-BBY-180</td><td><span class="fmode hy">Hybrid</span></td><td class="num">1,000</td><td class="num">900</td><td class="num">12.00</td><td class="num">3.30</td></tr>
+            <tr><td>Long-Sleeve Henley</td><td class="ref">KKC-HEN-200</td><td><span class="fmode stock">In stock</span></td><td class="num">500</td><td class="num">2,600</td><td class="num">26.00</td><td class="num">8.90</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- AD5 orders -->
+      <section class="panel" id="p-orders">
+        <div class="toolbar"><span class="chip on">All orders</span><span class="chip">Processing</span><span class="chip">In transit</span><span class="chip">Delivered</span></div>
+        <table class="tbl">
+          <thead><tr><th>Order</th><th>Buyer</th><th>Type</th><th class="num">Items</th><th class="num">Value</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="ref">KKC-2026-18342</td><td>Nordic Apparel AB</td><td>Retail</td><td class="num">2</td><td class="num">$54.86</td><td><span class="stat review">Processing</span></td></tr>
+            <tr><td class="ref">KKC-2026-15003</td><td>Southern Cross Wear</td><td>Bulk (RFQ)</td><td class="num">18,000</td><td class="num">$41,200</td><td><span class="stat new">In production</span></td></tr>
+            <tr><td class="ref">KKC-2026-14880</td><td>Hafen Textil GmbH</td><td>Bulk (RFQ)</td><td class="num">9,500</td><td class="num">$61,750</td><td><span class="stat ready">Shipped</span></td></tr>
+            <tr><td class="ref">KKC-2026-14002</td><td>Atlas Clothing Co.</td><td>Retail</td><td class="num">3</td><td class="num">$92.00</td><td><span class="stat won">Delivered</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- customers -->
+      <section class="panel" id="p-customers">
+        <table class="tbl">
+          <thead><tr><th>Company</th><th>Contact</th><th>Country</th><th>Type</th><th class="num">RFQs</th><th class="num">Lifetime value</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Nordic Apparel AB</td><td>Anders Møller</td><td>🇸🇪 Sweden</td><td>Retailer</td><td class="num">4</td><td class="num">$68,720</td><td><span class="stat ready">Verified</span></td></tr>
+            <tr><td>Hafen Textil GmbH</td><td>K. Vogel</td><td>🇩🇪 Germany</td><td>Importer</td><td class="num">9</td><td class="num">$214,300</td><td><span class="stat ready">Verified</span></td></tr>
+            <tr><td>Atlas Clothing Co.</td><td>J. Rivera</td><td>🇺🇸 USA</td><td>Brand</td><td class="num">3</td><td class="num">$18,900</td><td><span class="stat new">New</span></td></tr>
+            <tr><td>Meridian Retail Group</td><td>P. Shah</td><td>🇬🇧 UK</td><td>Retailer</td><td class="num">6</td><td class="num">$142,050</td><td><span class="stat ready">Verified</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+const titles={dash:'Dashboard',inbox:'RFQ Inbox',qb:'Quote builder',products:'Products & inventory',orders:'Orders',customers:'Customers'};
+const btns=document.querySelectorAll('.sidebar nav button');
+function show(p){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));document.getElementById('p-'+p).classList.add('on');btns.forEach(b=>b.classList.toggle('on',b.dataset.p===p));document.getElementById('ptitle').textContent=titles[p]||'';window.scrollTo({top:0,behavior:'smooth'});}
+btns.forEach(b=>b.addEventListener('click',()=>show(b.dataset.p)));
+function openQB(){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));document.getElementById('p-qb').classList.add('on');btns.forEach(b=>b.classList.toggle('on',b.dataset.p==='inbox'));document.getElementById('ptitle').textContent=titles.qb;window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.toolbar').forEach(t=>t.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{if(c.textContent.includes('Sort')||c.textContent.includes('Add')||c.textContent.includes('Import')||c.textContent.includes('Country')||c.textContent.includes('Buyer'))return;t.querySelectorAll('.chip').forEach(x=>{if(!(x.textContent.includes('Sort')||x.textContent.includes('Country')||x.textContent.includes('Buyer')))x.classList.remove('on')});c.classList.add('on');})));
+// Quote builder: live line totals + side totals
+const num=s=>parseFloat(String(s).replace(/[^0-9.]/g,''))||0;
+const grp=n=>Math.round(n).toLocaleString('en-US');
+function recalcQB(){let totalQty=0,quoteTotal=0;document.querySelectorAll('.qb-line').forEach(line=>{const inp=line.querySelectorAll('.qb-inputs input');const q=num(inp[0].value),u=num(inp[1].value);const lt=q*u;inp[3].value=grp(lt);totalQty+=q;quoteTotal+=lt;});const side=document.querySelector('.qb-side .box');if(side){const rows=side.querySelectorAll('.r b');rows[0].textContent=grp(totalQty)+' pcs';rows[2].textContent='$'+grp(quoteTotal);}}
+document.querySelectorAll('.qb-line .qb-inputs input').forEach((inp,i)=>{if(i%4===0||i%4===1)inp.addEventListener('input',recalcQB);});
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123A54'/%3E%3Cpath d='M10 22V10h6a5 5 0 010 10h-4l6 6' fill='none' stroke='%231E9E5C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Cart — KEYA Knit Composite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0C2436;--navy-800:#0A1E2E;--navy-600:#123A54;--navy-50:#E7EDF1;--green-600:#137A47;--green-700:#0F633A;--green-500:#1E9E5C;--green-50:#E4F3EA;--paper:#FAFAF7;--white:#fff;--slate:#5A6B76;--border:#E2E6E9;--amber-600:#8A5A0E;--amber-50:#FBF1DD;--danger:#B42318;--font-display:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-ui:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-mono:'JetBrains Mono','IBM Plex Mono',monospace;--r-card:10px;--r-btn:8px;--r-img:12px;--shadow-sm:0 1px 2px rgba(12,36,54,.06);--shadow-md:0 6px 20px -8px rgba(12,36,54,.14);--wrap:1240px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-ui);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.tnum{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:.95rem;border-radius:var(--r-btn);padding:13px 22px;border:1.5px solid transparent;cursor:pointer;transition:.15s;font-family:var(--font-ui)}
+.btn-quote{background:var(--ink);color:#fff}.btn-quote:hover{background:var(--navy-600)}
+.btn-buy{background:var(--green-600);color:#fff}.btn-buy:hover{background:var(--green-700)}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--border)}.btn-outline:hover{border-color:var(--ink)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.utilbar{background:var(--ink);color:#cdd8df;font-size:.78rem}.utilbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}.utilbar a{color:#cdd8df}.utilbar .u-right{display:flex;gap:18px}
+header.site{position:sticky;top:0;z-index:60;background:rgba(250,250,247,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;gap:28px;height:70px}
+.brand{display:flex;flex-direction:column;line-height:1}.brand .mark{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--ink);display:flex;align-items:center;gap:7px}.brand .loop{width:22px;height:22px}.brand .sub{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--slate);margin-top:3px;font-weight:600}
+.nav-links{display:flex;gap:26px;margin-left:8px}.nav-links a{font-weight:500;font-size:.95rem;position:relative;padding:6px 0}.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--green-600);transition:.22s}.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:6px}
+.icon-btn{position:relative;display:inline-flex;align-items:center;padding:9px 11px;border-radius:var(--r-btn);border:1px solid transparent;background:transparent;cursor:pointer;color:var(--ink)}.icon-btn:hover{background:#fff;border-color:var(--border)}.icon-btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.count-dot{position:absolute;top:2px;left:21px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;font-size:.66rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center}.count-dot.cart{background:var(--green-600)}.count-dot.quote{background:var(--ink)}
+.burger{display:none;background:none;border:none;cursor:pointer}.burger svg{width:26px;height:26px;stroke:var(--ink);stroke-width:1.8;fill:none}
+.crumb{font-size:.82rem;color:var(--slate);padding:20px 0 4px}.crumb a:hover{color:var(--ink)}
+.page-h{padding:6px 0 22px}.page-h h1{font-size:clamp(1.9rem,3.2vw,2.6rem)}.page-h .sub{color:var(--slate);margin-top:6px}
+/* lane banner */
+.lanebar{display:flex;gap:14px;align-items:center;background:var(--green-50);border:1px solid var(--green-500);border-left-width:4px;border-radius:var(--r-btn);padding:13px 18px;margin-bottom:24px}
+.lanebar svg{width:22px;height:22px;stroke:var(--green-700);fill:none;stroke-width:1.9;flex:none}
+.lanebar b{color:var(--green-700)}.lanebar p{font-size:.88rem;color:var(--ink)}
+.lanebar a{margin-left:auto;font-weight:600;color:var(--ink);white-space:nowrap;border:1.5px solid var(--ink);border-radius:var(--r-btn);padding:8px 14px;font-size:.85rem}.lanebar a:hover{background:var(--ink);color:#fff}
+/* layout */
+.cartwrap{display:grid;grid-template-columns:1fr 360px;gap:32px;padding-bottom:70px}
+.citems{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden}
+.citems .ch{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);font-weight:600}
+.cline{display:grid;grid-template-columns:96px 1fr auto;gap:18px;padding:22px;border-bottom:1px solid var(--border);align-items:start}
+.cline img{width:96px;height:118px;object-fit:cover;border-radius:10px;background:var(--paper)}
+.cline .ttl{font-family:var(--font-ui);font-weight:600;font-size:1.02rem}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px;margin-top:6px}
+.badge.stock{background:var(--green-50);color:var(--green-700)}
+.badge.mto{background:var(--amber-50);color:var(--amber-600)}
+.cline .meta{color:var(--slate);font-size:.86rem;margin-top:8px}
+.cline .meta span{display:inline-block;margin-right:14px}
+.cline .acts{margin-top:12px;display:flex;gap:16px;font-size:.83rem}
+.cline .acts button{background:none;border:none;color:var(--slate);cursor:pointer;font-weight:500;font-family:var(--font-ui);display:inline-flex;align-items:center;gap:5px}
+.cline .acts button:hover{color:var(--danger)}
+.cline .acts svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.cline .right{text-align:right}
+.cline .price{font-family:var(--font-ui);font-weight:700;font-size:1.08rem}
+.stepper2{display:inline-flex;align-items:center;border:1.5px solid var(--border);border-radius:var(--r-btn);margin-top:10px;overflow:hidden}
+.stepper2 button{width:32px;height:34px;background:#fff;border:none;cursor:pointer;font-size:1.1rem;color:var(--ink)}
+.stepper2 button:hover{background:var(--paper)}
+.stepper2 input{width:42px;text-align:center;border:none;border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);height:34px;font-family:var(--font-ui);font-weight:600}
+/* summary */
+.summary{position:sticky;top:90px;align-self:start;background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:24px}
+.summary h3{font-size:1.15rem;margin-bottom:16px}
+.srow{display:flex;justify-content:space-between;padding:9px 0;font-size:.92rem;color:var(--slate)}
+.srow b{color:var(--ink);font-weight:600}
+.srow.total{border-top:1px solid var(--border);margin-top:8px;padding-top:16px;font-size:1.1rem}.srow.total b{font-size:1.25rem}
+.promo{display:flex;gap:8px;margin:16px 0}
+.promo input{flex:1;border:1.5px solid var(--border);border-radius:var(--r-btn);padding:11px 13px;font-family:var(--font-ui);font-size:.9rem}
+.promo button{background:var(--ink);color:#fff;border:none;border-radius:var(--r-btn);padding:0 16px;font-weight:600;cursor:pointer;font-family:var(--font-ui)}
+.trustrow{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap}
+.trustrow div{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--slate)}
+.trustrow svg{width:15px;height:15px;stroke:var(--green-600);fill:none;stroke-width:2}
+/* cross sell */
+.xsell{padding:10px 0 70px}
+.xsell h2{font-size:1.4rem;margin-bottom:18px}
+.xgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pcard{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;transition:.18s}
+.pcard:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.pcard .pimg{aspect-ratio:4/5;background:var(--paper);overflow:hidden}.pcard .pimg img{width:100%;height:100%;object-fit:cover}
+.pcard .pb{padding:14px 15px 16px}
+.pcard h4{font-family:var(--font-ui);font-weight:600;font-size:.95rem}
+.pcard .pp{font-weight:700;margin-top:6px}
+.pcard .add{margin-top:10px;width:100%;font-size:.85rem;padding:9px}
+/* toast */
+.toast-wrap{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:10px;z-index:200}
+.toast{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--green-600);border-radius:var(--r-btn);padding:13px 18px;box-shadow:var(--shadow-md);transform:translateX(120%);transition:.4s;min-width:250px}
+.toast.show{transform:none}.toast.quote{border-left-color:var(--ink)}
+.toast svg{width:20px;height:20px;stroke:var(--green-600);fill:none;stroke-width:2}.toast.quote svg{stroke:var(--ink)}
+.toast b{font-size:.9rem}.toast span{font-size:.8rem;color:var(--slate)}
+footer.site{background:var(--navy-800);color:#aebcc4;padding:56px 0 28px;font-size:.9rem}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .mark{font-family:var(--font-display);font-weight:800;font-size:1.4rem;color:#fff;display:flex;gap:7px;align-items:center}.foot-brand p{margin:12px 0;max-width:34ch;color:#93a3ac}.foot-brand .addr{font-size:.82rem;color:#7f909a}
+footer h4{color:#fff;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;font-family:var(--font-ui);font-weight:600}footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}footer ul a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;padding-top:22px;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7f909a}
+@media(max-width:960px){.nav-links{display:none}.burger{display:block}.cartwrap{grid-template-columns:1fr}.summary{position:static}.xgrid{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cline{grid-template-columns:72px 1fr}.cline img{width:72px;height:90px}.cline .right{grid-column:2;text-align:left}.xgrid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="utilbar"><div class="wrap"><div>Free samples on qualifying orders · secure checkout</div><div class="u-right"><a href="#">🌐 EN</a><a href="#">USD $</a><a href="contact.html">Talk to sales</a></div></div></div>
+<header class="site"><nav class="nav wrap">
+  <a class="brand" href="../index.html"><span class="mark"><svg class="loop" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="#0C2436"/><path d="M10 22V10h6a5 5 0 010 10h-4l6 6" stroke="#1E9E5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>KEYA</span><span class="sub">Knit Composite</span></a>
+  <div class="nav-links"><a href="catalogue.html">Products</a><a href="company.html">Company</a><a href="quote.html">Request a Quote</a><a href="contact.html">Contact</a></div>
+  <div class="nav-right"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+    <a class="icon-btn" href="cart.html"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6L5 3H2"/></svg><span class="count-dot cart">2</span></a>
+    <a class="icon-btn" href="quote.html"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M13 3v6h6M12 12v5M9.5 14.5h5"/></svg><span class="count-dot quote">3</span></a>
+    <button class="burger"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</nav></header>
+
+<div class="wrap">
+  <div class="crumb"><a href="../index.html">Home</a> / <span>Shopping cart</span></div>
+  <div class="page-h"><h1>Your cart</h1><div class="sub">2 retail items · ready to ship from stock</div></div>
+
+  <!-- CT4 cart⇄quote separation banner -->
+  <div class="lanebar">
+    <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6L5 3H2"/></svg>
+    <div><b>This is your retail cart</b><p>Buy-now items ship at listed prices. Bulk &amp; custom orders live in your separate Quote list.</p></div>
+    <a href="quote.html">View Quote list (3) →</a>
+  </div>
+
+  <div class="cartwrap">
+    <div>
+      <div class="citems">
+        <div class="ch"><span>Product</span><span>Total</span></div>
+        <div class="cline">
+          <img src="/design/assets/product/tshirt-navy-v1.png" alt="">
+          <div>
+            <div class="ttl">Heavyweight Crew Tee</div>
+            <span class="badge stock">● In stock</span>
+            <div class="meta"><span>Colour: Navy</span><span>Size: L</span><span class="tnum">SKU KKC-TEE-220</span></div>
+            <div class="stepper2"><button data-d="-1">−</button><input value="1" class="tnum"><button data-d="1">+</button></div>
+            <div class="acts"><button class="rm"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button><button><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg>Save for later</button></div>
+          </div>
+          <div class="right"><div class="price tnum">$18.00</div></div>
+        </div>
+        <div class="cline">
+          <img src="/design/assets/product/polo-green-v1.png" alt="">
+          <div>
+            <div class="ttl">Piqué Polo Shirt</div>
+            <span class="badge stock">● In stock</span>
+            <div class="meta"><span>Colour: Sage</span><span>Size: M</span><span class="tnum">SKU KKC-POL-210</span></div>
+            <div class="stepper2"><button data-d="-1">−</button><input value="1" class="tnum"><button data-d="1">+</button></div>
+            <div class="acts"><button class="rm"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Remove</button><button><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.5-9 9-9 9z"/></svg>Save for later</button></div>
+          </div>
+          <div class="right"><div class="price tnum">$24.00</div></div>
+        </div>
+      </div>
+      <div style="margin-top:16px"><a class="btn btn-outline" href="catalogue.html">← Continue shopping</a></div>
+    </div>
+
+    <!-- CT2 summary -->
+    <aside class="summary">
+      <h3>Order summary</h3>
+      <div class="srow"><span>Subtotal (2 items)</span><b class="tnum">$42.00</b></div>
+      <div class="srow"><span>Estimated shipping</span><b class="tnum">$9.50</b></div>
+      <div class="srow"><span>Estimated tax</span><b class="tnum">$3.36</b></div>
+      <div class="promo"><input placeholder="Promo code"><button>Apply</button></div>
+      <div class="srow total"><span>Estimated total</span><b class="tnum">$54.86</b></div>
+      <a class="btn btn-buy" href="checkout.html" style="width:100%;margin-top:16px">Proceed to checkout</a>
+      <div class="trustrow">
+        <div><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>Secure payment</div>
+        <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Verified supplier</div>
+        <div><svg viewBox="0 0 24 24"><path d="M3 13l3-8h10l3 8"/></svg>Global shipping</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- CT3 cross-sell -->
+<div class="wrap"><section class="xsell">
+  <h2>Frequently bought together</h2>
+  <div class="xgrid">
+    <div class="pcard"><div class="pimg"><img src="/design/assets/product/hoodie-slate-v1.png" alt=""></div><div class="pb"><h4>Brushed Pullover Hoodie</h4><div class="pp tnum">$34.00</div><button class="btn btn-buy add">Add to cart</button></div></div>
+    <div class="pcard"><div class="pimg"><img src="/design/assets/product/henley-ecru-v1.png" alt=""></div><div class="pb"><h4>Long-Sleeve Henley</h4><div class="pp tnum">$26.00</div><button class="btn btn-buy add">Add to cart</button></div></div>
+    <div class="pcard"><div class="pimg"><img src="/design/assets/product/sweatshirt-navy-v1.png" alt=""></div><div class="pb"><h4>Crewneck Sweatshirt</h4><div class="pp tnum">$30.00</div><button class="btn btn-buy add">Add to cart</button></div></div>
+    <div class="pcard"><div class="pimg"><img src="/design/assets/product/women-rib-v1.png" alt=""></div><div class="pb"><h4>Ribbed Fitted Tee</h4><div class="pp tnum">$20.00</div><button class="btn btn-buy add">Add to cart</button></div></div>
+  </div>
+</section></div>
+
+<div class="toast-wrap" id="toasts"></div>
+
+<footer class="site"><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-brand"><div class="mark"><svg class="loop" style="width:24px;height:24px" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="#123A54"/><path d="M10 22V10h6a5 5 0 010 10h-4l6 6" stroke="#1E9E5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>KEYA</div><p>Vertically integrated knitwear manufacturing from Bangladesh.</p><div class="addr">Gazaria, Munshiganj, Bangladesh</div></div>
+    <div><h4>Products</h4><ul><li><a href="catalogue.html">Men's Wear</a></li><li><a href="catalogue.html">Women's Wear</a></li><li><a href="catalogue.html">Ready to Ship</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="company.html">About</a></li><li><a href="company.html">Sustainability</a></li><li><a href="company.html">Partners</a></li></ul></div>
+    <div><h4>Get started</h4><ul><li><a href="quote.html">Request a Quote</a></li><li><a href="cart.html">Cart</a></li><li><a href="account.html">Account</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><div>© 2026 Keya Knit Composite.</div><div>Privacy · Terms · Shipping &amp; Returns</div></div>
+</div></footer>
+
+<script>
+function toast(title,sub,quote){const w=document.getElementById('toasts');const t=document.createElement('div');t.className='toast'+(quote?' quote':'');t.innerHTML='<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>'+title+'</b><br><span>'+sub+'</span></div>';w.appendChild(t);requestAnimationFrame(()=>t.classList.add('show'));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},3200);}
+// Live totals: unit price captured at load (qty starts at 1)
+const SHIP=9.50, TAXR=0.08;
+const money=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+document.querySelectorAll('.cline').forEach(line=>{const p=line.querySelector('.price');const inp=line.querySelector('.stepper2 input');p.dataset.unit=(parseFloat(p.textContent.replace(/[^0-9.]/g,''))/Math.max(1,parseInt(inp.value||1))).toFixed(2);});
+function recompute(){let sub=0,qty=0;document.querySelectorAll('.cline').forEach(line=>{if(line.classList.contains('removed'))return;const p=line.querySelector('.price');const inp=line.querySelector('.stepper2 input');const q=Math.max(1,parseInt(inp.value||1));const unit=parseFloat(p.dataset.unit);p.textContent=money(unit*q);sub+=unit*q;qty+=q;});const tax=sub*TAXR,total=sub+SHIP+tax;const rows=document.querySelectorAll('.summary .srow');rows[0].querySelector('span').textContent='Subtotal ('+qty+' item'+(qty!==1?'s':'')+')';rows[0].querySelector('b').textContent=money(sub);rows[2].querySelector('b').textContent=money(tax);document.querySelector('.summary .srow.total b').textContent=money(total);}
+document.querySelectorAll('.stepper2').forEach(s=>{const inp=s.querySelector('input');s.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{let v=Math.max(1,parseInt(inp.value||1)+parseInt(b.dataset.d));inp.value=v;recompute();}));inp.addEventListener('input',recompute);});
+document.querySelectorAll('.cline .rm').forEach(r=>r.addEventListener('click',function(){const line=this.closest('.cline');line.classList.add('removed');line.style.opacity=.4;recompute();toast('Removed from cart','Item saved — undo in account');}));
+document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>toast('Added to cart','Retail item · ships from stock')));
+document.querySelector('.burger').addEventListener('click',()=>{const n=document.querySelector('.nav-links');const open=n.style.display==='flex';n.style.cssText=open?'':'display:flex;position:absolute;flex-direction:column;top:70px;left:0;right:0;background:#fff;padding:16px 24px;border-bottom:1px solid var(--border);gap:6px';});
+</script>
+</body>
+</html>

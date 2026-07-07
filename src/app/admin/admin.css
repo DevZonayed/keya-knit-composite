@@ -1,0 +1,128 @@
+/* admin console — scoped under .pg-admin */
+.pg-admin{--paper:#F4F6F7;--navy-900:#07161f;--sb:236px;background:var(--paper);color:var(--ink)}
+/* shell */
+.pg-admin .app{display:grid;grid-template-columns:var(--sb) 1fr;min-height:100vh}
+.pg-admin .sidebar{background:var(--navy-900);color:#9fb0ba;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:18px 14px}
+.pg-admin .sidebar .brand{display:flex;align-items:center;gap:9px;color:#fff;font-family:var(--font-display);font-weight:800;font-size:1.3rem;padding:6px 8px 4px}
+.pg-admin .sidebar .brand .tag{font-size:.55rem;letter-spacing:.2em;color:#5f7482;font-weight:600;font-family:var(--font-ui)}
+.pg-admin .sidebar .adm{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#5f7482;padding:16px 10px 8px;font-weight:600}
+.pg-admin .sidebar nav{display:flex;flex-direction:column;gap:2px}
+.pg-admin .sidebar nav button{display:flex;align-items:center;gap:11px;padding:10px 12px;background:none;border:none;border-radius:var(--r-btn);color:#9fb0ba;cursor:pointer;font-family:var(--font-ui);font-size:.9rem;font-weight:500;text-align:left;width:100%}
+.pg-admin .sidebar nav button:hover{background:rgba(255,255,255,.05);color:#fff}
+.pg-admin .sidebar nav button.on{background:var(--green-600);color:#fff}
+.pg-admin .sidebar nav button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.pg-admin .sidebar nav button .b{margin-left:auto;background:var(--danger);color:#fff;font-size:.68rem;font-weight:700;border-radius:999px;padding:1px 7px}
+.pg-admin .sidebar nav button.on .b{background:rgba(255,255,255,.25)}
+.pg-admin .sidebar .user{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 10px;border-top:1px solid rgba(255,255,255,.08)}
+.pg-admin .sidebar .user .av{width:34px;height:34px;border-radius:50%;background:var(--green-600);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+.pg-admin .sidebar .user b{color:#fff;font-size:.85rem;display:block}
+.pg-admin .sidebar .user span{font-size:.72rem}
+/* main */
+.pg-admin .main{padding:0}
+.pg-admin .topbar{background:#fff;border-bottom:1px solid var(--border);padding:16px 30px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20}
+.pg-admin .topbar h1{font-size:1.35rem}
+.pg-admin .topbar .search{margin-left:auto;position:relative}
+.pg-admin .topbar .search input{border:1.5px solid var(--border);border-radius:999px;padding:9px 15px 9px 36px;font-family:var(--font-ui);font-size:.86rem;width:240px}
+.pg-admin .topbar .search svg{position:absolute;left:12px;top:9px;width:16px;height:16px;stroke:var(--slate);fill:none;stroke-width:2}
+.pg-admin .content{padding:26px 30px 60px}
+.pg-admin .panel{display:none}
+.pg-admin .panel.on{display:block}
+/* KPI */
+.pg-admin .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.pg-admin .kpi{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:18px}
+.pg-admin .kpi .lab{font-size:.8rem;color:var(--slate);display:flex;align-items:center;gap:7px}
+.pg-admin .kpi .lab svg{width:15px;height:15px;stroke:var(--green-600);fill:none;stroke-width:2}
+.pg-admin .kpi .n{font-family:var(--font-display);font-weight:700;font-size:1.9rem;margin-top:8px;line-height:1}
+.pg-admin .kpi .d{font-size:.76rem;margin-top:6px;font-weight:600}
+.pg-admin .kpi .d.up{color:var(--green-700)}
+.pg-admin .kpi .d.down{color:var(--danger)}
+/* chart row */
+.pg-admin .chartrow{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:22px}
+.pg-admin .cbox{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px}
+.pg-admin .cbox h3{font-size:1rem;margin-bottom:4px}
+.pg-admin .cbox .cs{font-size:.8rem;color:var(--slate);margin-bottom:18px}
+/* funnel */
+.pg-admin .funnel{display:flex;flex-direction:column;gap:9px}
+.pg-admin .fstage{display:flex;align-items:center;gap:12px}
+.pg-admin .fstage .fl{width:120px;font-size:.82rem;color:var(--slate)}
+.pg-admin .fstage .bar{flex:1;height:26px;border-radius:6px;background:var(--green-600);display:flex;align-items:center;padding:0 10px;color:#fff;font-size:.78rem;font-weight:600}
+.pg-admin .fstage:nth-child(2) .bar{background:#1a8a52}
+.pg-admin .fstage:nth-child(3) .bar{background:var(--ink)}
+.pg-admin .fstage:nth-child(4) .bar{background:var(--navy-600)}
+.pg-admin .fstage:nth-child(5) .bar{background:var(--amber-600)}
+/* bar chart */
+.pg-admin .bars{display:flex;align-items:flex-end;gap:12px;height:170px;padding-top:10px}
+.pg-admin .bars .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.pg-admin .bars .col .bar{width:100%;max-width:34px;background:linear-gradient(var(--green-500),var(--green-600));border-radius:6px 6px 0 0}
+.pg-admin .bars .col small{font-size:.72rem;color:var(--slate)}
+/* markets */
+.pg-admin .mklist{display:flex;flex-direction:column;gap:12px}
+.pg-admin .mk{display:flex;align-items:center;gap:10px;font-size:.85rem}
+.pg-admin .mk .track{flex:1;height:8px;border-radius:4px;background:var(--navy-50);overflow:hidden}
+.pg-admin .mk .fill{height:100%;background:var(--green-600);border-radius:4px}
+.pg-admin .mk b{width:44px;text-align:right}
+/* tables */
+.pg-admin .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.pg-admin .chip{border:1.5px solid var(--border);background:#fff;border-radius:999px;padding:7px 14px;font-size:.82rem;font-weight:500;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.pg-admin .chip.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.pg-admin .tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;font-size:.86rem}
+.pg-admin .tbl th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);padding:12px 16px;border-bottom:1px solid var(--border);background:#fbfcfc}
+.pg-admin .tbl td{padding:14px 16px;border-bottom:1px solid var(--border)}
+.pg-admin .tbl tr:last-child td{border-bottom:none}
+.pg-admin .tbl tbody tr{cursor:pointer}
+.pg-admin .tbl tbody tr:hover{background:var(--paper)}
+.pg-admin .ref{font-family:var(--font-mono);font-size:.82rem;font-weight:500}
+.pg-admin .num{font-variant-numeric:tabular-nums;text-align:right}
+.pg-admin .stat{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pg-admin .stat.new{background:var(--navy-50);color:var(--navy-600)}
+.pg-admin .stat.review{background:var(--amber-50);color:var(--amber-600)}
+.pg-admin .stat.ready{background:var(--green-50);color:var(--green-700)}
+.pg-admin .stat.won{background:var(--green-600);color:#fff}
+.pg-admin .sla{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:600}
+.pg-admin .sla::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pg-admin .sla.ok{color:var(--green-700)}
+.pg-admin .sla.warn{color:var(--amber-600)}
+.pg-admin .sla.late{color:var(--danger)}
+/* quote builder */
+.pg-admin .qb-back{background:none;border:none;color:var(--slate);cursor:pointer;font-weight:600;font-size:.86rem;display:flex;align-items:center;gap:6px;margin-bottom:14px;font-family:var(--font-ui)}
+.pg-admin .qb-back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.pg-admin .qb-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.pg-admin .qb-head{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px;margin-bottom:16px;display:flex;gap:20px;flex-wrap:wrap}
+.pg-admin .qb-head .m .k{font-size:.72rem;color:var(--slate);text-transform:uppercase;letter-spacing:.05em}
+.pg-admin .qb-head .m .v{font-weight:600;margin-top:3px}
+.pg-admin .qb-line{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:16px;margin-bottom:12px}
+.pg-admin .qb-line .lh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.pg-admin .qb-line img{width:40px;height:50px;object-fit:cover;border-radius:6px;background:var(--paper)}
+.pg-admin .qb-line .lh b{font-size:.95rem}
+.pg-admin .qb-line .lh .sp{font-size:.78rem;color:var(--slate)}
+.pg-admin .qb-inputs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pg-admin .qb-inputs label{font-size:.72rem;color:var(--slate);display:block;margin-bottom:4px}
+.pg-admin .qb-inputs input{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:8px 10px;font-family:var(--font-ui);font-weight:600;font-size:.86rem}
+.pg-admin .qb-side{align-self:start;position:sticky;top:80px}
+.pg-admin .qb-side .box{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:18px;margin-bottom:12px}
+.pg-admin .qb-side .r{display:flex;justify-content:space-between;padding:6px 0;font-size:.86rem;color:var(--slate)}
+.pg-admin .qb-side .r b{color:var(--ink)}
+.pg-admin .qb-side .r.g{border-top:1px solid var(--border);margin-top:6px;padding-top:12px;font-size:1.05rem}
+.pg-admin .qb-side .r.g b{font-size:1.2rem}
+.pg-admin .qb-side .field{margin-bottom:10px}
+.pg-admin .qb-side .field label{font-size:.76rem;font-weight:600;display:block;margin-bottom:5px}
+.pg-admin .qb-side .field input,.pg-admin .qb-side .field select{width:100%;border:1.5px solid var(--border);border-radius:6px;padding:8px 10px;font-family:var(--font-ui);font-size:.84rem}
+.pg-admin .ver{font-size:.72rem;color:var(--slate);font-family:var(--font-mono)}
+.pg-admin .fmode{font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px}
+.pg-admin .fmode.stock{background:var(--green-50);color:var(--green-700)}
+.pg-admin .fmode.mto{background:var(--amber-50);color:var(--amber-600)}
+.pg-admin .fmode.hy{background:var(--navy-50);color:var(--navy-600)}
+@media(max-width:1080px){
+  .pg-admin .kpis{grid-template-columns:1fr 1fr}
+  .pg-admin .chartrow{grid-template-columns:1fr}
+  .pg-admin .qb-grid{grid-template-columns:1fr}
+  .pg-admin .qb-side{position:static}
+}
+@media(max-width:820px){
+  .pg-admin .app{grid-template-columns:1fr}
+  .pg-admin .sidebar{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}
+  .pg-admin .sidebar nav{flex-direction:row;flex-wrap:wrap}
+  .pg-admin .sidebar .adm,.pg-admin .sidebar .user{display:none}
+  .pg-admin .qb-inputs{grid-template-columns:1fr 1fr}
+  .pg-admin .kpis{grid-template-columns:1fr}
+}
