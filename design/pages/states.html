@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123A54'/%3E%3Cpath d='M10 22V10h6a5 5 0 010 10h-4l6 6' fill='none' stroke='%231E9E5C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Global States — KEYA Knit Composite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0C2436;--navy-800:#0A1E2E;--navy-600:#123A54;--navy-50:#E7EDF1;--green-600:#137A47;--green-700:#0F633A;--green-500:#1E9E5C;--green-50:#E4F3EA;--paper:#FAFAF7;--white:#fff;--slate:#5A6B76;--border:#E2E6E9;--amber-600:#8A5A0E;--amber-50:#FBF1DD;--danger:#B42318;--danger-50:#FBE9E7;--font-display:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-ui:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-mono:'JetBrains Mono','IBM Plex Mono',monospace;--r-card:10px;--r-btn:8px;--shadow-md:0 6px 20px -8px rgba(12,36,54,.14);--wrap:1240px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-ui);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.tnum{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:.92rem;border-radius:var(--r-btn);padding:12px 20px;border:1.5px solid transparent;cursor:pointer;transition:.15s;font-family:var(--font-ui)}
+.btn-quote{background:var(--ink);color:#fff}.btn-quote:hover{background:var(--navy-600)}
+.btn-buy{background:var(--green-600);color:#fff}.btn-buy:hover{background:var(--green-700)}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--border)}.btn-outline:hover{border-color:var(--ink)}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.pagehead{background:var(--ink);color:#fff;padding:34px 0}
+.pagehead h1{color:#fff;font-size:1.8rem}.pagehead p{color:#c2cfd7;margin-top:6px;font-size:.92rem}
+.pagehead .back{color:var(--green-500);font-size:.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;margin-bottom:14px}
+.pagehead .back svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:30px 0 70px}
+.demo{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column}
+.demo .lbl{padding:12px 18px;border-bottom:1px solid var(--border);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);font-weight:600;display:flex;align-items:center;gap:8px}
+.demo .lbl .tag{margin-left:auto;font-family:var(--font-mono);font-size:.72rem;background:var(--paper);padding:2px 8px;border-radius:5px;text-transform:none;letter-spacing:0}
+.demo .body{padding:26px;flex:1}
+.full{grid-column:1/-1}
+/* empty state */
+.empty{text-align:center;padding:20px}
+.empty img{width:140px;margin:0 auto 16px}
+.empty h3{font-size:1.25rem;margin-bottom:6px}
+.empty p{color:var(--slate);max-width:36ch;margin:0 auto 18px;font-size:.92rem}
+.empty .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+/* no results */
+.noresults{text-align:center;padding:26px}
+.noresults .ic{width:60px;height:60px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.noresults .ic svg{width:28px;height:28px;stroke:var(--slate);fill:none;stroke-width:1.8}
+.noresults h3{font-size:1.15rem;margin-bottom:6px}.noresults p{color:var(--slate);font-size:.9rem;margin-bottom:14px}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chips span{background:var(--paper);border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:.8rem;display:inline-flex;align-items:center;gap:6px}
+.chips span b{cursor:pointer;color:var(--slate)}
+/* skeleton */
+.skwrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.skcard{border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden}
+.sk{background:linear-gradient(90deg,#eef1f2 25%,#f7f9f9 50%,#eef1f2 75%);background-size:200% 100%;animation:sh 1.3s infinite}
+.sk.img{aspect-ratio:4/5}
+.sk.line{height:12px;border-radius:5px;margin:10px 14px}
+.sk.line.s{width:50%}.sk.line.m{width:75%}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* 404 */
+.err404{text-align:center;padding:40px 20px}
+.err404 .big{font-family:var(--font-display);font-weight:700;font-size:5rem;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.err404 .big .z{color:var(--green-600)}
+.err404 h3{font-size:1.4rem;margin:8px 0 6px}.err404 p{color:var(--slate);margin-bottom:20px}
+.err404 .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+/* validation */
+.field{margin-bottom:16px}
+.field label{font-size:.82rem;font-weight:600;display:block;margin-bottom:6px}
+.input{width:100%;border:1.5px solid var(--border);border-radius:var(--r-btn);padding:11px 14px;font-family:var(--font-ui);font-size:.9rem}
+.input.bad{border-color:var(--danger);background:var(--danger-50)}
+.input.good{border-color:var(--green-500);background:var(--green-50)}
+.msg{font-size:.78rem;margin-top:6px;display:flex;align-items:center;gap:6px}
+.msg.err{color:var(--danger)}.msg.ok{color:var(--green-700)}
+.msg svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.4}
+.payfail{display:flex;gap:12px;align-items:flex-start;background:var(--danger-50);border:1px solid #f0c4bf;border-radius:var(--r-btn);padding:14px 16px;margin-top:6px}
+.payfail svg{width:20px;height:20px;stroke:var(--danger);fill:none;stroke-width:2;flex:none;margin-top:2px}
+.payfail b{color:var(--danger)}.payfail p{font-size:.85rem;color:#8a3a32}
+/* redirect / cross-lane */
+.redirect{display:flex;gap:14px;background:var(--navy-50);border:1px solid var(--navy-600);border-left-width:4px;border-radius:var(--r-btn);padding:16px 18px}
+.redirect svg{width:24px;height:24px;stroke:var(--navy-600);fill:none;stroke-width:1.9;flex:none}
+.redirect b{color:var(--navy-600)}.redirect p{font-size:.88rem;margin-top:2px}
+.redirect a{color:var(--ink);font-weight:600;text-decoration:underline;font-size:.88rem}
+/* toast triggers */
+.toast-wrap{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:10px;z-index:200}
+.toast{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--green-600);border-radius:var(--r-btn);padding:13px 18px;box-shadow:var(--shadow-md);transform:translateX(130%);transition:.4s;min-width:260px}
+.toast.show{transform:none}
+.toast.quote{border-left-color:var(--ink)}.toast.info{border-left-color:var(--navy-600)}
+.toast svg{width:20px;height:20px;stroke:var(--green-600);fill:none;stroke-width:2;flex:none}.toast.quote svg{stroke:var(--ink)}.toast.info svg{stroke:var(--navy-600)}
+.toast b{font-size:.9rem}.toast span{font-size:.8rem;color:var(--slate)}
+.triggers{display:flex;gap:10px;flex-wrap:wrap}
+/* modal demo */
+.mbtns{display:flex;gap:10px;flex-wrap:wrap}
+.overlay{position:fixed;inset:0;background:rgba(10,30,46,.55);backdrop-filter:blur(4px);z-index:300;display:none;align-items:center;justify-content:center;padding:24px}
+.overlay.on{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:30px;box-shadow:0 30px 80px -20px rgba(12,36,54,.5)}
+.modal h3{font-size:1.3rem;margin-bottom:6px}.modal p{color:var(--slate);font-size:.9rem;margin-bottom:18px}
+.modal .x{float:right;cursor:pointer;color:var(--slate);font-size:1.3rem;line-height:1}
+.modal .field{margin-bottom:14px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.skwrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pagehead"><div class="wrap">
+  <a class="back" href="../index.html"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Back to storefront</a>
+  <h1>Global states &amp; system components</h1>
+  <p>Empty states, no-results, loading skeletons, error/404, form validation, modals, toasts and the two-lane cross-redirect — the connective tissue used across every page.</p>
+</div></div>
+
+<div class="wrap"><div class="grid">
+
+  <!-- empty cart -->
+  <div class="demo"><div class="lbl">Empty state · Cart <span class="tag">green lane</span></div><div class="body">
+    <div class="empty"><img src="/design/assets/global/empty-cart-v1.png" alt="Empty cart illustration">
+      <h3>Your cart is empty</h3><p>Browse ready-to-ship products and add retail items to check out fast.</p>
+      <div class="cta"><a class="btn btn-buy" href="catalogue.html">Shop products</a></div>
+    </div>
+  </div></div>
+
+  <!-- empty quote -->
+  <div class="demo"><div class="lbl">Empty state · Quote list <span class="tag">navy lane</span></div><div class="body">
+    <div class="empty"><img src="/design/assets/global/empty-quote-v1.png" alt="Empty quote list illustration">
+      <h3>No items in your Quote list</h3><p>Add bulk or custom products to build a single structured RFQ — no account required.</p>
+      <div class="cta"><a class="btn btn-quote" href="quote.html">Start a quote</a></div>
+    </div>
+  </div></div>
+
+  <!-- no results -->
+  <div class="demo"><div class="lbl">No search results</div><div class="body">
+    <div class="noresults">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M8 11h6"/></svg></div>
+      <h3>No products match "merino zip"</h3><p>Try removing a filter or broadening your search.</p>
+      <div class="chips"><span>Category: Men's <b>×</b></span><span>Fabric: Merino <b>×</b></span><span>In stock <b>×</b></span></div>
+    </div>
+  </div></div>
+
+  <!-- loading skeleton -->
+  <div class="demo"><div class="lbl">Loading · skeleton cards</div><div class="body">
+    <div class="skwrap">
+      <div class="skcard"><div class="sk img"></div><div class="sk line m"></div><div class="sk line s"></div><div style="height:8px"></div></div>
+      <div class="skcard"><div class="sk img"></div><div class="sk line m"></div><div class="sk line s"></div><div style="height:8px"></div></div>
+    </div>
+  </div></div>
+
+  <!-- form validation -->
+  <div class="demo"><div class="lbl">Form validation · inline</div><div class="body">
+    <div class="field"><label>Email</label><input class="input bad" value="buyer@brand"><div class="msg err"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>Enter a valid email address.</div></div>
+    <div class="field"><label>Order quantity (MOQ 500)</label><input class="input good" value="2,000"><div class="msg ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Meets minimum order quantity.</div></div>
+    <div class="payfail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg><div><b>Payment declined</b><p>Your card was declined. Check details or try another payment method.</p></div></div>
+  </div></div>
+
+  <!-- cross-lane redirect -->
+  <div class="demo"><div class="lbl">Two-lane cross-redirect</div><div class="body">
+    <div class="redirect"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M13 3v6h6"/></svg><div><b>Moved to your Quote list</b><p>"Brushed Pullover Hoodie" is made to order (MOQ 300), so it can't be bought at retail. We've added it to your <a href="quote.html">Quote list</a> instead.</p></div></div>
+    <div style="margin-top:16px" class="triggers">
+      <button class="btn btn-buy" onclick="toast('Added to cart','Retail item · ships from stock','')">Trigger cart toast</button>
+      <button class="btn btn-quote" onclick="toast('Added to Quote list','Bulk item · request pricing','quote')">Trigger quote toast</button>
+      <button class="btn btn-outline" onclick="toast('Moved to Quote list','Made-to-order item relocated','info')">Cross-lane toast</button>
+    </div>
+  </div></div>
+
+  <!-- modal demo -->
+  <div class="demo"><div class="lbl">Modal · sign in / create account</div><div class="body">
+    <p style="color:var(--slate);font-size:.9rem;margin-bottom:16px">Sign-in and quick-view dialogs overlay any page with a blurred scrim.</p>
+    <div class="mbtns"><button class="btn btn-quote" onclick="document.getElementById('m-signin').classList.add('on')">Open sign-in modal</button><button class="btn btn-outline" onclick="document.getElementById('m-quick').classList.add('on')">Open quick-view</button></div>
+  </div></div>
+
+  <!-- 404 -->
+  <div class="demo full"><div class="lbl">Error · 404 not found</div><div class="body">
+    <div class="err404">
+      <div class="big">4<span class="z">0</span>4</div>
+      <h3>We couldn't find that page</h3>
+      <p>The link may be broken or the product may have moved. Let's get you back on track.</p>
+      <div class="cta"><a class="btn btn-buy" href="../index.html">Back to home</a><a class="btn btn-outline" href="catalogue.html">Browse products</a><a class="btn btn-outline" href="quote.html">Request a quote</a></div>
+    </div>
+  </div></div>
+
+</div></div>
+
+<!-- modals -->
+<div class="overlay" id="m-signin"><div class="modal">
+  <span class="x" onclick="this.closest('.overlay').classList.remove('on')">×</span>
+  <h3>Sign in</h3><p>Access your orders, quotes and verified-buyer pricing.</p>
+  <div class="field"><label>Email</label><input class="input" placeholder="you@company.com"></div>
+  <div class="field"><label>Password</label><input class="input" type="password" placeholder="••••••••"></div>
+  <button class="btn btn-buy" style="width:100%">Sign in</button>
+  <p style="text-align:center;margin:14px 0 0;font-size:.85rem">New here? <a href="account.html" style="color:var(--green-700);font-weight:600">Create a business account</a></p>
+</div></div>
+
+<div class="overlay" id="m-quick"><div class="modal" style="max-width:520px">
+  <span class="x" onclick="this.closest('.overlay').classList.remove('on')">×</span>
+  <div style="display:flex;gap:18px"><img src="/design/assets/product/tshirt-navy-v1.png" style="width:130px;border-radius:10px" alt="">
+    <div><h3>Heavyweight Crew Tee</h3><p style="margin:6px 0 10px">Navy · 220 GSM · In stock</p><div style="font-weight:700;font-size:1.3rem" class="tnum">$18.00</div><div style="font-size:.82rem;color:var(--slate);margin-top:4px">Bulk from $6.40 · MOQ 500</div>
+    <div style="display:flex;gap:8px;margin-top:16px"><a class="btn btn-buy" href="product.html">View full details</a></div></div>
+  </div>
+</div></div>
+
+<div class="toast-wrap" id="toasts"></div>
+
+<script>
+function toast(title,sub,cls){const w=document.getElementById('toasts');const t=document.createElement('div');t.className='toast '+cls;t.innerHTML='<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><div><b>'+title+'</b><br><span>'+sub+'</span></div>';w.appendChild(t);requestAnimationFrame(()=>t.classList.add('show'));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},3200);}
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('on')}));
+document.querySelectorAll('.chips b, .noresults .chips b').forEach(b=>b.addEventListener('click',()=>b.parentElement.remove()));
+</script>
+</body>
+</html>

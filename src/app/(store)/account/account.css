@@ -1,0 +1,93 @@
+/* account header */
+.pg-account .acc-head{background:#fff;border-bottom:1px solid var(--border);padding:30px 0}
+.pg-account .acc-head .row{display:flex;align-items:center;gap:18px}
+.pg-account .avatar{width:58px;height:58px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:1.5rem;flex:none}
+.pg-account .acc-head h1{font-size:1.6rem}.pg-account .acc-head .who{color:var(--slate);font-size:.9rem;display:flex;align-items:center;gap:8px;margin-top:3px}
+.pg-account .vbadge{display:inline-flex;align-items:center;gap:5px;background:var(--green-50);color:var(--green-700);font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px}
+.pg-account .vbadge svg{width:13px;height:13px;stroke:var(--green-600);fill:none;stroke-width:2.4}
+/* layout */
+.pg-account .acc-grid{display:grid;grid-template-columns:230px 1fr;gap:32px;padding:30px 0 70px}
+.pg-account .side{align-self:start;position:sticky;top:90px}
+.pg-account .side .navi{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden}
+.pg-account .side .navi button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:13px 16px;background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:var(--font-ui);font-size:.92rem;font-weight:500;color:var(--ink)}
+.pg-account .side .navi button:last-child{border-bottom:none}
+.pg-account .side .navi button svg{width:18px;height:18px;stroke:var(--slate);fill:none;stroke-width:1.8}
+.pg-account .side .navi button.on{background:var(--green-50);color:var(--green-700);font-weight:600;box-shadow:inset 3px 0 0 var(--green-600)}
+.pg-account .side .navi button.on svg{stroke:var(--green-600)}
+.pg-account .side .navi button .c{margin-left:auto;background:var(--navy-50);color:var(--ink);font-size:.72rem;font-weight:700;border-radius:999px;padding:1px 8px}
+.pg-account .side .signout{margin-top:12px;width:100%;justify-content:flex-start}
+/* panels */
+.pg-account .panel{display:none}.pg-account .panel.on{display:block}
+.pg-account .panel h2{font-size:1.4rem;margin-bottom:4px}.pg-account .panel .sub{color:var(--slate);font-size:.9rem;margin-bottom:20px}
+.pg-account .card{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px;margin-bottom:14px}
+/* order row */
+.pg-account .orow{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.pg-account .orow .thumb{display:flex}.pg-account .orow .thumb img{width:46px;height:56px;object-fit:cover;border-radius:7px;margin-left:-10px;border:2px solid #fff;background:var(--paper)}.pg-account .orow .thumb img:first-child{margin-left:0}
+.pg-account .orow .oid{font-family:var(--font-mono);font-size:.82rem;color:var(--slate)}
+.pg-account .orow .ot{font-weight:600;margin-top:2px}
+.pg-account .orow .meta{font-size:.82rem;color:var(--slate);margin-top:3px}
+.pg-account .orow .right{text-align:right}
+.pg-account .pill{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:600;padding:4px 11px;border-radius:999px}
+.pg-account .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pg-account .pill.delivered{background:var(--green-50);color:var(--green-700)}
+.pg-account .pill.transit{background:var(--navy-50);color:var(--navy-600)}
+.pg-account .pill.processing{background:var(--amber-50);color:var(--amber-600)}
+/* RFQ pipeline */
+.pg-account .rfqcard{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px;margin-bottom:14px;cursor:pointer;transition:.15s}
+.pg-account .rfqcard:hover{border-color:var(--ink);box-shadow:var(--shadow-md)}
+.pg-account .rfqcard .top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.pg-account .rfqcard .ref{font-family:var(--font-mono);font-weight:500;font-size:.9rem}
+.pg-account .rfqcard .val{margin-left:auto;text-align:right}.pg-account .rfqcard .val b{font-size:1.05rem}.pg-account .rfqcard .val span{font-size:.76rem;color:var(--slate);display:block}
+.pg-account .stat{font-size:.74rem;font-weight:600;padding:4px 11px;border-radius:999px}
+.pg-account .stat.review{background:var(--amber-50);color:var(--amber-600)}
+.pg-account .stat.ready{background:var(--green-50);color:var(--green-700)}
+.pg-account .stat.submitted{background:var(--navy-50);color:var(--navy-600)}
+.pg-account .stat.closed{background:#eee;color:var(--slate)}
+/* pipeline track */
+.pg-account .track{display:flex;align-items:center;gap:0;margin-top:6px}
+.pg-account .track .node{flex:1;text-align:center;position:relative;font-size:.68rem;color:var(--slate)}
+.pg-account .track .node .d{width:16px;height:16px;border-radius:50%;background:var(--border);margin:0 auto 6px;position:relative;z-index:2}
+.pg-account .track .node::before{content:"";position:absolute;top:8px;left:-50%;width:100%;height:2px;background:var(--border);z-index:1}
+.pg-account .track .node:first-child::before{display:none}
+.pg-account .track .node.done{color:var(--green-700);font-weight:600}.pg-account .track .node.done .d{background:var(--green-600)}.pg-account .track .node.done::before{background:var(--green-600)}
+.pg-account .track .node.cur .d{background:var(--ink);box-shadow:0 0 0 4px rgba(12,36,54,.12)}
+.pg-account .track .node.cur{color:var(--ink);font-weight:700}
+/* quote detail */
+.pg-account .qd-back{background:none;border:none;color:var(--slate);cursor:pointer;font-family:var(--font-ui);font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:6px;margin-bottom:14px}
+.pg-account .qd-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.pg-account .qtbl{width:100%;border-collapse:collapse;font-size:.88rem}
+.pg-account .qtbl th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);padding:10px 12px;border-bottom:1px solid var(--border)}
+.pg-account .qtbl td{padding:13px 12px;border-bottom:1px solid var(--border)}
+.pg-account .qtbl tr:last-child td{border-bottom:none}
+.pg-account .qtbl .pn{font-weight:600}.pg-account .qtbl .sp{font-size:.78rem;color:var(--slate)}
+.pg-account .qtbl .num{font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.pg-account .qd-tot{display:flex;justify-content:flex-end;gap:40px;padding:16px 12px;background:var(--paper);border-radius:var(--r-btn);margin-top:4px}
+.pg-account .qd-tot .k{font-size:.8rem;color:var(--slate)}.pg-account .qd-tot .v{font-weight:700;font-size:1.15rem}
+.pg-account .qd-actions{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}
+.pg-account .valid-note{display:flex;gap:9px;align-items:center;background:var(--amber-50);color:var(--amber-600);border-radius:var(--r-btn);padding:11px 15px;font-size:.85rem;font-weight:500;margin-bottom:18px}
+.pg-account .valid-note svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex:none}
+/* messaging thread */
+.pg-account .thread{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px}
+.pg-account .thread h3{font-size:1.05rem;margin-bottom:16px}
+.pg-account .msg{display:flex;gap:11px;margin-bottom:16px}
+.pg-account .msg .av{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff}
+.pg-account .msg.them .av{background:var(--green-600)}.pg-account .msg.me .av{background:var(--ink)}
+.pg-account .msg .bub{background:var(--paper);border:1px solid var(--border);border-radius:12px;border-top-left-radius:3px;padding:11px 15px;font-size:.88rem;max-width:80%}
+.pg-account .msg.me{flex-direction:row-reverse}.pg-account .msg.me .bub{border-top-left-radius:12px;border-top-right-radius:3px;background:var(--navy-50);border-color:var(--navy-50)}
+.pg-account .msg .t{font-size:.7rem;color:var(--slate);margin-top:5px}
+.pg-account .msgbox{display:flex;gap:10px;margin-top:8px}
+.pg-account .msgbox input{flex:1;border:1.5px solid var(--border);border-radius:var(--r-btn);padding:11px 14px;font-family:var(--font-ui)}
+/* addresses / profile */
+.pg-account .addr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pg-account .addr{border:1px solid var(--border);border-radius:var(--r-card);padding:18px;background:#fff;font-size:.9rem}
+.pg-account .addr .tag{font-size:.72rem;font-weight:700;color:var(--green-700);text-transform:uppercase;letter-spacing:.06em}
+.pg-account .addr p{color:var(--slate);margin-top:6px;line-height:1.5}
+.pg-account .prof-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);font-size:.92rem}
+.pg-account .prof-row:last-child{border:none}.pg-account .prof-row .k{color:var(--slate)}.pg-account .prof-row .v{font-weight:600}
+/* empty state */
+.pg-account .empty{text-align:center;padding:40px 20px}
+.pg-account .empty img{width:150px;margin:0 auto 18px;opacity:.95}
+.pg-account .empty h3{font-size:1.3rem;margin-bottom:6px}
+.pg-account .empty p{color:var(--slate);max-width:38ch;margin:0 auto 18px}
+@media(max-width:960px){.pg-account .acc-grid{grid-template-columns:1fr}.pg-account .side{position:static}.pg-account .side .navi{display:flex;overflow-x:auto}.pg-account .side .navi button{border-bottom:none;border-right:1px solid var(--border);white-space:nowrap}.pg-account .side .signout{display:none}.pg-account .addr-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.pg-account .track .node span{display:none}}
