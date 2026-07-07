@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123A54'/%3E%3Cpath d='M10 22V10h6a5 5 0 010 10h-4l6 6' fill='none' stroke='%231E9E5C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>KEYA Knit Composite — From two pieces to twenty thousand</title>
+<meta name="description" content="Vertically integrated knitwear manufacturer from Bangladesh. Buy finished goods or request a bulk manufacturing quote — one trusted partner, 3.5M+ pieces a month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C2436; --navy-800:#0A1E2E; --navy-600:#123A54; --navy-50:#E7EDF1;
+  --green-600:#137A47; --green-700:#0F633A; --green-500:#1E9E5C; --green-50:#E4F3EA;
+  --paper:#FAFAF7; --white:#FFFFFF; --slate:#5A6B76; --border:#E2E6E9;
+  --amber-600:#8A5A0E; --amber-50:#FBF1DD; --danger:#B42318;
+  --font-display:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-ui:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-mono:'JetBrains Mono','IBM Plex Mono',monospace;
+  --r-card:10px; --r-btn:8px; --r-img:12px;
+  --shadow-sm:0 1px 2px rgba(12,36,54,.06); --shadow-md:0 6px 20px -8px rgba(12,36,54,.14); --shadow-lg:0 20px 50px -20px rgba(12,36,54,.28);
+  --wrap:1240px; --gap:clamp(56px,7vw,104px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-ui);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.eyebrow.on-dark{color:#9cb4c2}
+.tnum{font-variant-numeric:tabular-nums}
+section{padding:var(--gap) 0}
+
+/* ---------- Buttons (two-lane) ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-ui);font-weight:600;font-size:.95rem;border-radius:var(--r-btn);padding:13px 22px;border:1.5px solid transparent;cursor:pointer;transition:transform .12s ease,background .18s,box-shadow .18s,border-color .18s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-buy{background:var(--green-600);color:#fff}
+.btn-buy:hover{background:var(--green-700);box-shadow:var(--shadow-md)}
+.btn-quote{background:var(--ink);color:#fff}
+.btn-quote:hover{background:var(--navy-600);box-shadow:var(--shadow-md)}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:#fff}
+.btn-outline.on-dark{color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-outline.on-dark:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn-ghost{background:transparent;padding-left:0;padding-right:0}
+.btn-ghost:hover{color:var(--green-700)}
+.btn .ico{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Header ---------- */
+.utilbar{background:var(--ink);color:#cdd8df;font-size:.78rem}
+.utilbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+.utilbar a{color:#cdd8df}.utilbar a:hover{color:#fff}
+.utilbar .u-right{display:flex;gap:20px;align-items:center}
+.util-sel{display:inline-flex;align-items:center;gap:5px;color:#cdd8df}
+.util-sel svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
+header.site{position:sticky;top:0;z-index:60;background:rgba(250,250,247,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;gap:28px;height:72px}
+.brand{display:flex;flex-direction:column;line-height:1;margin-right:8px}
+.brand .mark{font-family:var(--font-display);font-weight:800;font-size:1.5rem;letter-spacing:.01em;color:var(--ink);display:flex;align-items:center;gap:7px}
+.brand .loop{width:22px;height:22px;flex:none}
+.brand .sub{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-top:3px;font-weight:600}
+.nav-links{display:flex;gap:26px;margin-left:8px}
+.nav-links a{font-weight:500;font-size:.95rem;color:var(--ink);position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--green-600);transition:width .22s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:var(--r-btn);border:1px solid transparent;background:transparent;cursor:pointer;font-family:var(--font-ui);font-size:.82rem;font-weight:600;color:var(--ink)}
+.icon-btn:hover{background:var(--white);border-color:var(--border)}
+.icon-btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.count-dot{position:absolute;top:2px;left:22px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;font-size:.66rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-ui)}
+.count-dot.cart{background:var(--green-600)}
+.count-dot.quote{background:var(--ink)}
+.icon-btn .lbl{display:none}
+.burger{display:none;background:none;border:none;cursor:pointer}
+.burger svg{width:26px;height:26px;stroke:var(--ink);stroke-width:1.8}
+.nav-links a:focus-visible,.icon-btn:focus-visible,.burger:focus-visible{outline:3px solid var(--green-600);outline-offset:3px;border-radius:6px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:clamp(560px,78vh,760px);display:flex;align-items:center;color:#fff;overflow:hidden;padding:0}
+.hero>.wrap{width:100%}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(102deg,rgba(9,28,44,.84) 0%,rgba(9,28,44,.58) 46%,rgba(9,28,44,.12) 82%,rgba(20,58,84,.04) 100%)}
+.hero-bg::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(120% 80% at 18% 30%,transparent 55%,rgba(138,90,14,.14) 100%);mix-blend-mode:soft-light;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:648px;padding:44px 0 74px}
+.hero .tagline{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;letter-spacing:.04em;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:7px 14px;border-radius:999px;margin-bottom:26px;backdrop-filter:blur(4px)}
+.hero .tagline .pip{width:7px;height:7px;border-radius:50%;background:var(--green-500);box-shadow:0 0 0 4px rgba(30,158,92,.25)}
+.hero h1{font-size:clamp(2.15rem,5.4vw,4.2rem);font-weight:800;color:#fff;letter-spacing:-.012em;line-height:1.12;text-wrap:balance}
+.hero h1 em{font-style:normal;font-weight:700;color:var(--green-500)}
+.hero p.lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:#d6e0e6;max-width:520px;margin:22px 0 34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-cta .btn-quote{background:var(--navy-600);border:1px solid rgba(255,255,255,.14);box-shadow:0 16px 38px -14px rgba(0,0,0,.75),0 0 0 1px rgba(30,158,92,.28) inset;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.hero-cta .btn-quote .ico{color:var(--green-500)}
+.hero-cta .btn-quote:hover{background:#16466a;transform:translateY(-2px);box-shadow:0 22px 46px -14px rgba(0,0,0,.8),0 0 0 1px rgba(30,158,92,.5) inset}
+.hero-cta .btn-outline.on-dark:hover{background:rgba(255,255,255,.08)}
+.hero a.btn:focus-visible,.hero .tagline:focus-visible{outline:3px solid var(--green-500);outline-offset:3px;border-radius:8px}
+.hero-meta{display:flex;gap:26px;margin-top:40px;flex-wrap:wrap}
+.hero-meta div{border-left:2px solid rgba(255,255,255,.35);padding-left:14px}
+.hero-meta div:nth-child(2){border-left-color:rgba(214,158,60,.55)}
+.hero-meta b{font-family:var(--font-display);font-size:1.5rem;font-weight:700;display:block}
+.hero-meta span{font-size:.8rem;color:#c2ccd3}
+.hero-cap{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.hero-cap .chip{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:500;color:#d0dae0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);padding:6px 12px;border-radius:999px;letter-spacing:.01em}
+.hero-cap .chip svg{width:14px;height:14px;stroke:var(--green-500);fill:none;stroke-width:2}
+
+/* ---------- Operational snapshot (dense strip) ---------- */
+.ops-strip{background:var(--navy-800);color:#fff;padding:38px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.ops-strip .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.ops-stat{text-align:center;padding:6px 12px;border-right:1px solid rgba(255,255,255,.1)}
+.ops-stat:last-child{border-right:none}
+.ops-stat .ops-val{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:700;color:#fff;letter-spacing:-.02em}
+.ops-stat .ops-val .ops-unit{font-size:.7em;font-weight:500;color:rgba(255,255,255,.55);margin-left:2px}
+.ops-stat .ops-lab{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:4px;font-weight:500;letter-spacing:.02em}
+
+/* ---------- Trust bar ---------- */
+.trust{background:var(--white);border-bottom:1px solid var(--border);padding:0}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust .cell{padding:38px 20px;text-align:center;border-right:1px solid var(--border)}
+.trust .cell:last-child{border-right:none}
+.trust .num{font-family:var(--font-display);font-size:clamp(2rem,3.4vw,2.9rem);font-weight:700;color:var(--ink);letter-spacing:-.025em}
+.trust .num .suf{color:var(--navy-600)}
+.trust .lab{font-size:.84rem;color:var(--slate);margin-top:4px;font-weight:500}
+
+/* ---------- Section head ---------- */
+.sec-head{max-width:640px;margin-bottom:44px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head h2{font-size:clamp(1.9rem,3.4vw,2.9rem);margin-top:12px}
+.sec-head p{color:var(--slate);font-size:1.05rem;margin-top:14px}
+
+/* ---------- Dual path splitter ---------- */
+.splitter{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lane-card{position:relative;border-radius:16px;overflow:hidden;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;color:#fff;isolation:isolate}
+.lane-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.lane-card::after{content:"";position:absolute;inset:0;z-index:-1}
+.lane-card.buy::after{background:linear-gradient(180deg,rgba(15,99,58,.15) 0%,rgba(11,42,25,.86) 100%)}
+.lane-card.quote::after{background:linear-gradient(180deg,rgba(10,30,46,.2) 0%,rgba(10,30,46,.9) 100%)}
+.lane-tag{position:absolute;top:24px;left:24px;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.lane-card.buy .lane-tag{background:var(--green-500);color:#06251a}
+.lane-card.quote .lane-tag{background:#fff;color:var(--ink)}
+.lane-card h3{font-size:1.8rem;color:#fff}
+.lane-card p{color:#e4ebef;margin:10px 0 20px;font-size:.98rem;max-width:38ch}
+.lane-card .btn{align-self:flex-start}
+
+/* ---------- Categories ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{position:relative;border-radius:var(--r-img);overflow:hidden;aspect-ratio:1;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.cat:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.cat img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat:hover img{transform:scale(1.05)}
+.cat .cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(10,30,46,.8));color:#fff;display:flex;justify-content:space-between;align-items:center}
+.cat .cap b{font-family:var(--font-ui);font-size:1.15rem;font-weight:700}
+.cat .cap svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none}
+
+/* ---------- Product cards ---------- */
+.prod-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:20px;flex-wrap:wrap}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.card .thumb{position:relative;aspect-ratio:4/5;background:var(--paper);overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:12px;left:12px;font-size:.74rem;font-weight:700;letter-spacing:.03em;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%}
+.badge.stock{background:var(--green-50);color:var(--green-700)}.badge.stock::before{background:var(--green-600)}
+.badge.mto{background:var(--amber-50);color:var(--amber-600)}.badge.mto::before{background:var(--amber-600)}
+.badge.hybrid{background:var(--navy-50);color:var(--ink)}.badge.hybrid::before{background:linear-gradient(90deg,var(--green-600) 50%,var(--ink) 50%)}
+.card .body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.card .cat-tag{font-size:.76rem;color:var(--slate);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.card h3{font-family:var(--font-ui);font-weight:600;font-size:1.02rem;margin:5px 0 3px;letter-spacing:0}
+.card .spec{font-size:.85rem;color:var(--slate)}
+.card .price-zone{margin-top:14px;padding-top:13px;border-top:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;gap:10px;min-height:56px}
+.price{font-family:var(--font-ui);font-weight:700;font-size:1.15rem;color:var(--ink)}
+.price .cur{font-size:.85rem;color:var(--slate);font-weight:600}
+.moq{font-size:.82rem;color:var(--slate);font-family:var(--font-mono)}
+.moq b{color:var(--ink);font-weight:700}
+.from{font-size:.76rem;color:var(--slate);display:block}
+.mini-btn{border:1.5px solid;border-radius:var(--r-btn);padding:9px 13px;font-size:.82rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;background:transparent;transition:.15s}
+.mini-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.9}
+.mini-buy{border-color:var(--green-600);color:#fff;background:var(--green-600)}
+.mini-buy:hover{background:var(--green-700);border-color:var(--green-700)}
+.mini-quote{border-color:var(--ink);color:var(--ink)}
+.mini-quote:hover{background:var(--ink);color:#fff}
+
+/* ---------- Process ---------- */
+.process{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.process .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.process-img{border-radius:var(--r-img);overflow:hidden;background:var(--paper);border:1px solid var(--border)}
+.steps{display:flex;flex-direction:column;gap:2px;counter-reset:st}
+.step{display:flex;gap:16px;padding:13px 0;border-bottom:1px dashed var(--border)}
+.step:last-child{border-bottom:none}
+.step .n{counter-increment:st;flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.82rem;color:var(--slate);transition:.2s}
+.step .n::before{content:counter(st,decimal-leading-zero)}
+.step:hover .n{background:var(--green-600);color:#fff;border-color:var(--green-600)}
+.step b{font-family:var(--font-ui);font-weight:700;font-size:1.06rem;display:block}
+.step span{font-size:.88rem;color:var(--slate)}
+
+/* ---------- Sustainability ---------- */
+.sustain{position:relative;color:#fff;overflow:hidden}
+.sustain-bg{position:absolute;inset:0;z-index:0}
+.sustain-bg img{width:100%;height:100%;object-fit:cover}
+.sustain-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,30,46,.94),rgba(10,30,46,.62))}
+.sustain .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.sustain h2{color:#fff;font-size:clamp(1.9rem,3.4vw,2.9rem)}
+.sustain p{color:#d3dde3;margin:16px 0 26px;max-width:46ch}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cert{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:16px 12px;text-align:center;transition:.2s}
+.cert:hover{background:rgba(255,255,255,.14);border-color:var(--green-500)}
+.cert b{font-family:var(--font-ui);font-size:1rem;display:block;color:#fff;font-weight:700}
+.cert span{font-size:.76rem;color:#aebcc4;letter-spacing:.01em}
+
+/* ---------- Clients ---------- */
+.clients{text-align:center}
+.logo-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:36px}
+.logo-chip{border:1px solid var(--border);border-radius:10px;background:var(--white);padding:26px 12px;display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-weight:700;font-size:1.2rem;letter-spacing:.01em;color:var(--slate);transition:.2s}
+.logo-chip:hover{color:var(--ink);border-color:var(--ink);box-shadow:var(--shadow-sm)}
+.logo-note{font-size:.76rem;color:var(--slate);margin-top:22px}
+
+/* ---------- Export map ---------- */
+.export .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center}
+.map-img{border-radius:var(--r-img);overflow:hidden;border:1px solid var(--border);background:var(--white)}
+.market-list{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:2px}
+.market-list li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);font-weight:500}
+.market-list li:last-child{border:none}
+.market-list .pin{width:10px;height:10px;border-radius:50%;background:var(--green-500);box-shadow:0 0 0 4px var(--green-50);flex:none}
+.market-list .pct{margin-left:auto;font-family:var(--font-mono);font-size:.82rem;color:var(--slate)}
+
+/* ---------- Final CTA ---------- */
+.finalcta-section{background:var(--paper);padding:clamp(30px,4vw,56px) 0 clamp(72px,9vw,120px)}
+.finalcta{position:relative;overflow:hidden;border-radius:22px;background:var(--navy-800);color:#fff;box-shadow:var(--shadow-lg)}
+.finalcta .fc-bg{position:absolute;inset:0;z-index:0}
+.finalcta .fc-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 35%;filter:saturate(.9)}
+.finalcta .fc-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(107deg,rgba(9,26,40,.98) 0%,rgba(9,26,40,.94) 44%,rgba(15,45,66,.66) 78%,rgba(20,70,90,.42) 100%)}
+.finalcta .fc-glow{position:absolute;inset:0;z-index:1;background:radial-gradient(48% 90% at 8% 0%,rgba(30,158,92,.32),transparent 62%)}
+.fc-inner{position:relative;z-index:2;padding:clamp(46px,6.5vw,92px) clamp(28px,6vw,86px);max-width:820px}
+.fc-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:22px}
+.fc-eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--green-500);box-shadow:0 0 0 4px rgba(30,158,92,.22)}
+.finalcta h2{color:#fff;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;line-height:1.1;letter-spacing:-.012em;text-wrap:balance}
+.finalcta h2 em{font-style:normal;font-weight:700;color:var(--green-500)}
+.finalcta p{color:#c9d4da;margin:22px 0 36px;font-size:clamp(1.02rem,1.4vw,1.18rem);max-width:52ch}
+.fc-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.fc-primary{font-size:1.02rem;padding:16px 32px;border-radius:10px;box-shadow:0 12px 34px -10px rgba(30,158,92,.7)}
+.fc-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(30,158,92,.75)}
+.fc-secondary{color:#fff;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.28);padding:16px 26px;border-radius:10px}
+.fc-secondary:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.55)}
+.fc-trust{display:flex;gap:14px 32px;flex-wrap:wrap;margin-top:42px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);list-style:none}
+.fc-trust li{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:500;color:#dbe4e9}
+.fc-trust li svg{width:18px;height:18px;flex:none;stroke:var(--green-500);fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Footer ---------- */
+footer.site{background:var(--navy-800);color:#aebcc4;padding:64px 0 30px;font-size:.9rem}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .mark{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:#fff;display:flex;align-items:center;gap:7px}
+.foot-brand p{margin:14px 0;max-width:34ch;color:#93a3ac}
+.foot-brand .addr{font-size:.84rem;color:#7f909a}
+footer h4{color:#fff;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+footer ul a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#7f909a}
+.foot-certs{display:flex;gap:10px;flex-wrap:wrap}
+.foot-certs span{border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:4px 9px;font-size:.76rem;font-weight:600;letter-spacing:.02em;color:#93a3ac}
+
+/* ---------- Toast (global state demo) ---------- */
+.toast-tray{position:fixed;right:22px;bottom:22px;z-index:200;display:flex;flex-direction:column;gap:12px}
+.toast{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--border);border-left:4px solid var(--green-600);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow-lg);max-width:340px;transform:translateY(8px);opacity:0;animation:toastIn .35s forwards}
+.toast.quote{border-left-color:var(--ink)}
+.toast .tico{width:34px;height:34px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--green-50)}
+.toast.quote .tico{background:var(--navy-50)}
+.toast .tico svg{width:19px;height:19px;stroke:var(--green-700);fill:none;stroke-width:1.9}
+.toast.quote .tico svg{stroke:var(--ink)}
+.toast b{font-size:.9rem}.toast span{font-size:.8rem;color:var(--slate)}
+@keyframes toastIn{to{transform:translateY(0);opacity:1}}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1000px){
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .trust .cell:nth-child(2){border-right:none}
+  .cat-grid,.prod-grid{grid-template-columns:1fr 1fr}
+  .process .grid,.sustain .wrap,.export .grid{grid-template-columns:1fr;gap:36px}
+  .splitter{grid-template-columns:1fr}
+  .logo-wall{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .ops-strip .wrap{grid-template-columns:repeat(3,1fr)}
+  .ops-stat:nth-child(3){border-right:none}
+  .ops-stat:nth-child(n+4){border-top:1px solid rgba(255,255,255,.08);padding-top:16px;margin-top:10px}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .icon-btn .lbl{display:none}
+  .cat-grid,.prod-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .logo-wall{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-meta b{font-size:1.25rem}
+  .hero-cap .chip{font-size:.72rem;padding:5px 10px}
+  .ops-strip .wrap{grid-template-columns:repeat(2,1fr)}
+  .ops-stat:nth-child(2n){border-right:none}
+  .ops-stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08);padding-top:12px;margin-top:8px}
+  .hero-bg img{object-position:34% 42%}
+  .hero-bg::after{background:linear-gradient(178deg,rgba(9,28,44,.7) 0%,rgba(9,28,44,.5) 40%,rgba(9,28,44,.82) 100%)}
+  .hero-inner{max-width:100%;padding:36px 0 56px}
+  .hero h1{line-height:1.18}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+@media(max-width:560px){
+  .finalcta-section{padding:24px 0 64px}
+  .fc-inner{padding:38px 24px}
+  .finalcta h2 br{display:none}
+  .fc-cta{flex-direction:column;align-items:stretch}
+  .fc-cta .btn{width:100%;justify-content:center}
+  .fc-trust{gap:14px;margin-top:32px}
+  .fc-trust li{width:100%}
+}
+/* ---------- Global focus-visible ---------- */
+.cat:focus-visible,.lane-card:focus-visible,.card:focus-visible,.logo-chip:focus-visible{outline:3px solid var(--green-600);outline-offset:3px;border-radius:var(--r-card)}
+.mini-btn:focus-visible,.btn:focus-visible,.fc-secondary:focus-visible{outline:3px solid var(--green-600);outline-offset:3px;border-radius:var(--r-btn)}
+footer ul a:focus-visible,.foot-bottom a:focus-visible{outline:2px solid var(--green-500);outline-offset:3px;border-radius:4px}
+.cert:focus-visible{outline:2px solid var(--green-500);outline-offset:2px;border-radius:10px}
+.util-sel:focus-visible,.utilbar a:focus-visible{outline:2px solid rgba(255,255,255,.7);outline-offset:2px;border-radius:4px}
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr 1fr;gap:12px}
+}
+@media(max-width:640px){
+  .utilbar{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="utilbar">
+  <div class="wrap">
+    <div class="u-left">Global knitwear manufacturing since 2003 · Gazaria, Bangladesh</div>
+    <div class="u-right">
+      <a class="util-sel" href="#">🌐 EN</a>
+      <span class="util-sel"><svg viewBox="0 0 24 24"><path d="M12 1v22M5 5h9a3 3 0 010 6H7a3 3 0 000 6h10"/></svg>USD $</span>
+      <a href="pages/contact.html">Talk to sales</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site">
+  <nav class="nav wrap">
+    <a class="brand" href="index.html">
+      <span class="mark">
+        <svg class="loop" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="#0C2436"/><path d="M10 22V10h6a5 5 0 010 10h-4l6 6" stroke="#1E9E5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        KEYA
+      </span>
+      <span class="sub">Knit Composite</span>
+    </a>
+    <div class="nav-links">
+      <a href="pages/catalogue.html">Products</a>
+      <a href="pages/company.html">Company</a>
+      <a href="pages/quote.html">Request a Quote</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+      <a class="icon-btn" href="pages/cart.html" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6L5 3H2"/></svg><span class="count-dot cart">2</span></a>
+      <a class="icon-btn" href="pages/quote.html" aria-label="Quote list"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" stroke-dasharray="0"/><path d="M13 3v6h6"/><path d="M12 12v5M9.5 14.5h5"/></svg><span class="count-dot quote">3</span></a>
+      <button class="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </nav>
+</header>
+
+<!-- H1 Hero -->
+<section class="hero">
+  <div class="hero-bg"><img src="/design/assets/home/hero-v3.png" alt="KEYA production hall — workers tending rows of circular knitting machines and rolls of knitted fabric"></div>
+  <div class="wrap"><div class="hero-inner">
+    <span class="tagline"><span class="pip"></span>Vertically integrated · 20+ years · Bangladesh</span>
+    <h1>From two pieces to <em>twenty&nbsp;thousand</em> — one trusted knitwear partner.</h1>
+    <p class="lede">Buy finished garments today, or configure a bulk manufacturing order and get a formal quote in 48 hours. Same factory. Same standards. One smooth platform.</p>
+    <div class="hero-cta">
+      <a class="btn btn-quote" href="pages/quote.html"><svg class="ico" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M13 3v6h6M12 12v5M9.5 14.5h5"/></svg>Request a Quote</a>
+      <a class="btn btn-outline on-dark" href="pages/catalogue.html">Shop Products</a>
+    </div>
+    <div class="hero-meta">
+      <div><b class="tnum">3.5M+</b><span>Pieces / month</span></div>
+      <div><b class="tnum">5,000+</b><span>Skilled workforce</span></div>
+      <div><b>9-step</b><span>In-house production</span></div>
+    </div>
+    <div class="hero-cap">
+      <span class="chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>300+ Knitting Machines</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>4,000+ Sewing Lines</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>Full ETP Treatment</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>FOB · CIF · DDP Ready</span>
+    </div>
+  </div></div>
+</section>
+
+<!-- H2 Trust bar -->
+<div class="trust">
+  <div class="wrap">
+    <div class="cell"><div class="num"><span class="counter tnum" data-to="20">0</span><span class="suf">+</span></div><div class="lab">Years of expertise</div></div>
+    <div class="cell"><div class="num"><span class="counter tnum" data-to="5000" data-fmt="k">0</span><span class="suf">+</span></div><div class="lab">Skilled workforce</div></div>
+    <div class="cell"><div class="num"><span class="counter tnum" data-to="3.5" data-dec="1">0</span><span class="suf">M+</span></div><div class="lab">Pieces / month</div></div>
+    <div class="cell"><div class="num"><span class="counter tnum" data-to="120" >0</span><span class="suf">K+</span></div><div class="lab">Pieces / day</div></div>
+  </div>
+</div>
+
+<!-- H3 Dual-path splitter -->
+<section>
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Two ways to work with us</span>
+      <h2>One catalogue. Buy it or quote it.</h2>
+      <p>Every product carries a fulfilment mode. Grab finished stock through a normal cart, or configure specs and request a bulk quote — hold both at once.</p>
+    </div>
+    <div class="splitter">
+      <div class="lane-card buy reveal">
+        <img src="/design/assets/home/lane-buy-v1.png" alt="Folded finished retail garments">
+        <span class="lane-tag">Retail · Buy now</span>
+        <h3>Buy finished products</h3>
+        <p>Ready-to-ship samples and stock, listed prices, standard checkout — from 1 piece.</p>
+        <a class="btn btn-buy" href="pages/catalogue.html"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>Shop the catalogue</a>
+      </div>
+      <div class="lane-card quote reveal">
+        <img src="/design/assets/home/lane-quote-v1.png" alt="Fabric swatches and spec sheet for bulk sourcing">
+        <span class="lane-tag">Bulk · Request quote</span>
+        <h3>Request a bulk quote</h3>
+        <p>Configure fabric, GSM, colours, sizes, private label & MOQ. One structured RFQ, a formal quote back in 48h.</p>
+        <a class="btn btn-quote" href="pages/quote.html"><svg class="ico" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M13 3v6h6M12 12v5M9.5 14.5h5"/></svg>Start an RFQ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- H4 Categories -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="prod-head reveal">
+      <div><span class="eyebrow">Shop by category</span><h2 style="font-size:clamp(1.7rem,3vw,2.4rem);margin-top:10px">Built for every wearer</h2></div>
+      <a class="btn btn-ghost" href="pages/catalogue.html">All products →</a>
+    </div>
+    <div class="cat-grid">
+      <a class="cat reveal" href="pages/catalogue.html"><img src="/design/assets/home/cat-men-v1.png" alt="Men's wear"><div class="cap"><b>Men's Wear</b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+      <a class="cat reveal" href="pages/catalogue.html"><img src="/design/assets/home/cat-women-v1.png" alt="Women's wear"><div class="cap"><b>Women's Wear</b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+      <a class="cat reveal" href="pages/catalogue.html"><img src="/design/assets/home/cat-kids-v1.png" alt="Kids wear"><div class="cap"><b>Kids Wear</b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+      <a class="cat reveal" href="pages/catalogue.html"><img src="/design/assets/home/cat-baby-v1.png" alt="Babywear"><div class="cap"><b>Babywear</b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- H5 Featured products -->
+<section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="prod-head reveal">
+      <div><span class="eyebrow">Ready to ship</span><h2 style="font-size:clamp(1.7rem,3vw,2.4rem);margin-top:10px">Sample the line, buy today</h2></div>
+      <a class="btn btn-ghost" href="pages/catalogue.html">View all →</a>
+    </div>
+    <div class="prod-grid">
+      <!-- Hybrid -->
+      <article class="card reveal">
+        <a href="pages/product.html" class="thumb"><span class="badge hybrid">Hybrid</span><img src="/design/assets/product/tshirt-navy-v1.png" alt="Navy crew-neck T-shirt"></a>
+        <div class="body">
+          <span class="cat-tag">Men · T-Shirt</span>
+          <h3>Heavyweight Crew Tee</h3>
+          <div class="spec">100% Cotton · 220 GSM</div>
+          <div class="price-zone">
+            <div><span class="price"><span class="cur">$</span>18.00</span><span class="from">or MOQ 500 · from $6.40</span></div>
+            <a class="mini-btn mini-buy" href="pages/product.html" title="Add to cart"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <!-- Stock -->
+      <article class="card reveal">
+        <a href="pages/product.html" class="thumb"><span class="badge stock">In Stock</span><img src="/design/assets/product/polo-green-v1.png" alt="Green pique polo"></a>
+        <div class="body">
+          <span class="cat-tag">Men · Polo</span>
+          <h3>Classic Piqué Polo</h3>
+          <div class="spec">Cotton Piqué · 200 GSM</div>
+          <div class="price-zone">
+            <div><span class="price"><span class="cur">$</span>24.00</span><span class="from">In stock · ships in 3 days</span></div>
+            <a class="mini-btn mini-buy" href="pages/product.html" title="Add to cart"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <!-- Made to order -->
+      <article class="card reveal">
+        <a href="pages/product.html" class="thumb"><span class="badge mto">Made to Order</span><img src="/design/assets/product/hoodie-slate-v1.png" alt="Slate pullover hoodie"></a>
+        <div class="body">
+          <span class="cat-tag">Unisex · Hoodie</span>
+          <h3>Brushed Pullover Hoodie</h3>
+          <div class="spec">Cotton/Poly · 320 GSM</div>
+          <div class="price-zone">
+            <div><span class="moq"><b>MOQ 300</b></span><span class="from">from $11.90 / pc</span></div>
+            <a class="mini-btn mini-quote" href="pages/quote.html" title="Add to quote"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M12 12v5M9.5 14.5h5"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <!-- Made to order / quote only -->
+      <article class="card reveal">
+        <a href="pages/product.html" class="thumb"><span class="badge mto">Made to Order</span><img src="/design/assets/product/baby-bodysuit-v1.png" alt="Baby bodysuit"></a>
+        <div class="body">
+          <span class="cat-tag">Baby · Bodysuit</span>
+          <h3>Organic Cotton Bodysuit</h3>
+          <div class="spec">GOTS Organic · 180 GSM</div>
+          <div class="price-zone">
+            <div><span class="moq"><b>MOQ 1,000</b></span><span class="from">Request quote for pricing</span></div>
+            <a class="mini-btn mini-quote" href="pages/quote.html" title="Add to quote"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M12 12v5M9.5 14.5h5"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- H6 Process -->
+<section class="process">
+  <div class="wrap">
+    <div class="grid">
+      <div class="process-img reveal"><img src="/design/assets/home/process-v1.png" alt="Nine-step manufacturing process flow"></div>
+      <div class="reveal">
+        <span class="eyebrow">Vertical integration</span>
+        <h2 style="font-size:clamp(1.9rem,3.2vw,2.7rem);margin-top:12px">Nine steps, one roof.</h2>
+        <p style="color:var(--slate);margin:14px 0 26px">From raw yarn to a container at the port, every stage happens inside KEYA — so quality, lead time and traceability stay in our hands.</p>
+        <div class="steps">
+          <div class="step"><span class="n"></span><div><b>Yarn & Spinning</b><span>Sourced and spun to spec</span></div></div>
+          <div class="step"><span class="n"></span><div><b>Knitting</b><span>300+ circular knitting machines</span></div></div>
+          <div class="step"><span class="n"></span><div><b>Dyeing & Finishing</b><span>ETP-backed, colour-matched</span></div></div>
+          <div class="step"><span class="n"></span><div><b>Cutting & Sewing</b><span>4,000+ sewing machines</span></div></div>
+          <div class="step"><span class="n"></span><div><b>QC · Packing · Export</b><span>AQL inspection to FOB</span></div></div>
+        </div>
+        <a class="btn btn-outline" style="margin-top:26px" href="pages/company.html">Explore our manufacturing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Operational snapshot strip -->
+<div class="ops-strip">
+  <div class="wrap">
+    <div class="ops-stat"><div class="ops-val">300<span class="ops-unit">+</span></div><div class="ops-lab">Knitting machines</div></div>
+    <div class="ops-stat"><div class="ops-val">4,000<span class="ops-unit">+</span></div><div class="ops-lab">Sewing lines</div></div>
+    <div class="ops-stat"><div class="ops-val">120<span class="ops-unit">K/day</span></div><div class="ops-lab">Capacity</div></div>
+    <div class="ops-stat"><div class="ops-val">28<span class="ops-unit">–35</span></div><div class="ops-lab">Day lead time</div></div>
+    <div class="ops-stat"><div class="ops-val">99.2<span class="ops-unit">%</span></div><div class="ops-lab">AQL pass rate</div></div>
+    <div class="ops-stat"><div class="ops-val">14<span class="ops-unit">MW</span></div><div class="ops-lab">Captive power</div></div>
+  </div>
+</div>
+
+<!-- H7 Sustainability -->
+<section class="sustain">
+  <div class="sustain-bg"><img src="/design/assets/home/sustainability-v1.png" alt="Effluent treatment plant and green factory"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow on-dark">Sustainability & compliance</span>
+      <h2>Compliance our buyers can bank on.</h2>
+      <p>Full effluent treatment, environmental stewardship and audited social compliance — the credentials brand-conscious buyers require, all in one place.</p>
+      <a class="btn btn-buy" href="pages/company.html">See our certifications</a>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert"><b>OEKO-TEX</b><span>Standard 100</span></div>
+      <div class="cert"><b>GOTS</b><span>Organic textiles</span></div>
+      <div class="cert"><b>amfori</b><span>BSCI</span></div>
+      <div class="cert"><b>WRAP</b><span>Responsible prod.</span></div>
+      <div class="cert"><b>Sedex</b><span>SMETA</span></div>
+      <div class="cert"><b>ISO 9001</b><span>Quality mgmt</span></div>
+      <div class="cert"><b>ISO 14001</b><span>Environment</span></div>
+      <div class="cert"><b>Accord</b><span>RSC structural</span></div>
+      <div class="cert"><b>GRS</b><span>Recycled std</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- H8 Clients -->
+<section class="clients">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="margin-bottom:0">
+      <span class="eyebrow">Trusted by global brands</span>
+      <h2 style="font-size:clamp(1.7rem,3vw,2.3rem)">We already make for the names you know</h2>
+    </div>
+    <div class="logo-wall reveal">
+      <div class="logo-chip">H&amp;M</div><div class="logo-chip">ZARA</div><div class="logo-chip">Primark</div><div class="logo-chip">Decathlon</div><div class="logo-chip">Walmart</div>
+      <div class="logo-chip">NEXT</div><div class="logo-chip">Kiabi</div><div class="logo-chip">C&amp;A</div><div class="logo-chip">OVS</div><div class="logo-chip" style="color:var(--green-700)">+ more</div>
+    </div>
+    <p class="logo-note reveal">Brand names shown represent supply relationships; logos displayed subject to usage rights.</p>
+  </div>
+</section>
+
+<!-- H9 Export map -->
+<section class="export" style="background:var(--white);border-top:1px solid var(--border)">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <span class="eyebrow">Global export capability</span>
+        <h2 style="font-size:clamp(1.9rem,3.2vw,2.7rem);margin-top:12px">Shipping to five continents.</h2>
+        <p style="color:var(--slate);margin-top:14px">Export-ready documentation, incoterms and port handling — we deliver where your buyers are.</p>
+        <ul class="market-list">
+          <li><span class="pin"></span>Europe <span class="pct">EU / UK</span></li>
+          <li><span class="pin"></span>United States <span class="pct">Americas</span></li>
+          <li><span class="pin"></span>Australia <span class="pct">Oceania</span></li>
+          <li><span class="pin"></span>Southeast Asia <span class="pct">APAC</span></li>
+          <li><span class="pin"></span>Middle East <span class="pct">GCC</span></li>
+        </ul>
+      </div>
+      <div class="map-img reveal"><img src="/design/assets/home/exportmap-v1.png" alt="World export map with market pins"></div>
+    </div>
+  </div>
+</section>
+
+<!-- H10 Final CTA -->
+<section class="finalcta-section">
+  <div class="wrap">
+    <div class="finalcta reveal">
+      <div class="fc-bg"><img src="/design/assets/home/hero-v1.png" alt=""></div>
+      <div class="fc-glow"></div>
+      <div class="fc-inner">
+        <span class="fc-eyebrow"><span class="pip"></span>Start your order</span>
+        <h2>From two sample pieces<br>to <em>twenty thousand</em>.</h2>
+        <p>Send a tech pack, a reference photo, or a rough idea. Our merchandising team scopes it, prices it, and returns a formal quotation — one partner from yarn to FOB.</p>
+        <div class="fc-cta">
+          <a class="btn btn-buy fc-primary" href="pages/quote.html"><svg class="ico" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M13 3v6h6M12 12v5M9.5 14.5h5"/></svg>Request a Quote</a>
+          <a class="btn fc-secondary" href="pages/catalogue.html">Browse ready-to-ship →</a>
+        </div>
+        <ul class="fc-trust">
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>48-hour quote response</li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 13l2-6h14l2 6M5 13h14v5H5zM8 18v2M16 18v2"/></svg>FOB · CIF · DDP incoterms</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>MOQ from 500 pcs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="mark"><svg class="loop" style="width:24px;height:24px" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="#123A54"/><path d="M10 22V10h6a5 5 0 010 10h-4l6 6" stroke="#1E9E5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>KEYA</div>
+        <p>Vertically integrated knitwear manufacturing from Bangladesh — from two pieces to twenty thousand.</p>
+        <div class="addr">Keya Knit Composite, a sister concern of Keya Group<br>Gazaria, Munshiganj, Bangladesh</div>
+      </div>
+      <div><h4>Products</h4><ul><li><a href="pages/catalogue.html">Men's Wear</a></li><li><a href="pages/catalogue.html">Women's Wear</a></li><li><a href="pages/catalogue.html">Kids Wear</a></li><li><a href="pages/catalogue.html">Babywear</a></li><li><a href="pages/catalogue.html">Ready to Ship</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="pages/company.html">About KEYA</a></li><li><a href="pages/company.html">Manufacturing</a></li><li><a href="pages/company.html">Sustainability</a></li><li><a href="pages/company.html">Infrastructure</a></li><li><a href="pages/company.html">Our Partners</a></li></ul></div>
+      <div><h4>Get started</h4><ul><li><a href="pages/quote.html">Request a Quote</a></li><li><a href="pages/cart.html">Shopping Cart</a></li><li><a href="pages/account.html">My Account</a></li><li><a href="pages/contact.html">Contact Sales</a></li><li><a href="pages/admin.html">Admin (internal)</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Keya Knit Composite. All rights reserved. · <a href="pages/states.html" style="color:#7f909a;text-decoration:underline">UI states &amp; components</a></div>
+      <div class="foot-certs"><span>OEKO-TEX</span><span>GOTS</span><span>WRAP</span><span>ISO 9001</span><span>amfori BSCI</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast demo (global state) -->
+<div class="toast-tray" id="toastTray"></div>
+
+<script>
+// Count-up
+const fmt=(v,dec,k)=>{if(k)return (v/1000>=1?Math.round(v/1000)+',000':Math.round(v));return dec?v.toFixed(dec):Math.round(v).toLocaleString()};
+function runCounter(el){const to=parseFloat(el.dataset.to),dec=el.dataset.dec?+el.dataset.dec:0,k=el.dataset.fmt==='k';let s=null;const d=1100;
+  function step(t){if(!s)s=t;const p=Math.min((t-s)/d,1);const e=1-Math.pow(1-p,3);const val=to*e;el.textContent=k?Math.round(val).toLocaleString():(dec?val.toFixed(dec):Math.round(val).toLocaleString());if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);}
+// Reveal + counters via IO
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.classList.contains('trust')){e.target.querySelectorAll('.counter').forEach(runCounter);}io.unobserve(e.target);}})},{threshold:.18});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const trust=document.querySelector('.trust');if(trust)io.observe(trust);
+// Toast demo on buy/quote mini buttons
+function toast(kind,title,msg){const t=document.createElement('div');t.className='toast'+(kind==='quote'?' quote':'');
+  t.innerHTML=(kind==='quote'?'<div class="tico"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M12 12v5M9.5 14.5h5"/></svg></div>':'<div class="tico"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>')+'<div><b>'+title+'</b><br><span>'+msg+'</span></div>';
+  document.getElementById('toastTray').appendChild(t);setTimeout(()=>{t.style.transition='opacity .4s,transform .4s';t.style.opacity='0';t.style.transform='translateY(8px)';setTimeout(()=>t.remove(),400)},3200);}
+document.querySelectorAll('.mini-buy').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();toast('buy','Added to cart','Heavyweight Crew Tee · $18.00');const d=document.querySelector('.count-dot.cart');d.textContent=+d.textContent+1;}));
+document.querySelectorAll('.mini-quote').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();toast('quote','Added to Quote list','We\'ll price it in your RFQ');const d=document.querySelector('.count-dot.quote');d.textContent=+d.textContent+1;}));
+// mobile burger -> simple nav toggle
+document.querySelector('.burger').addEventListener('click',()=>{const n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex';n.style.position='absolute';n.style.flexDirection='column';n.style.top='72px';n.style.left='0';n.style.right='0';n.style.background='#fff';n.style.padding='16px 24px';n.style.borderBottom='1px solid var(--border)';n.style.gap='4px';});
+</script>
+</body>
+</html>

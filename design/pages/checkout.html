@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23123A54'/%3E%3Cpath d='M10 22V10h6a5 5 0 010 10h-4l6 6' fill='none' stroke='%231E9E5C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Checkout — KEYA Knit Composite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0C2436;--navy-800:#0A1E2E;--navy-600:#123A54;--navy-50:#E7EDF1;--green-600:#137A47;--green-700:#0F633A;--green-500:#1E9E5C;--green-50:#E4F3EA;--paper:#FAFAF7;--white:#fff;--slate:#5A6B76;--border:#E2E6E9;--amber-600:#8A5A0E;--amber-50:#FBF1DD;--danger:#B42318;--font-display:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-ui:'Inter',-apple-system,'Segoe UI',Roboto,system-ui,sans-serif; --font-mono:'JetBrains Mono','IBM Plex Mono',monospace;--r-card:10px;--r-btn:8px;--r-img:12px;--shadow-sm:0 1px 2px rgba(12,36,54,.06);--shadow-md:0 6px 20px -8px rgba(12,36,54,.14);--wrap:1240px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-ui);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.narrow{max-width:1040px}
+.tnum{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:.95rem;border-radius:var(--r-btn);padding:13px 22px;border:1.5px solid transparent;cursor:pointer;transition:.15s;font-family:var(--font-ui)}
+.btn-buy{background:var(--green-600);color:#fff}.btn-buy:hover{background:var(--green-700)}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--border)}.btn-outline:hover{border-color:var(--ink)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+/* minimal checkout header */
+header.co{background:#fff;border-bottom:1px solid var(--border)}
+.co .bar{display:flex;align-items:center;height:68px;gap:20px}
+.brand{display:flex;flex-direction:column;line-height:1}.brand .mark{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--ink);display:flex;align-items:center;gap:7px}.brand .loop{width:22px;height:22px}.brand .sub{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--slate);margin-top:3px;font-weight:600}
+.co .secure{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--slate)}
+.co .secure svg{width:16px;height:16px;stroke:var(--green-600);fill:none;stroke-width:2}
+/* progress */
+.chk-steps{display:flex;gap:8px;padding:26px 0 6px;flex-wrap:wrap}
+.cs{display:flex;align-items:center;gap:9px;font-size:.86rem;font-weight:600;color:var(--slate)}
+.cs .n{width:24px;height:24px;border-radius:50%;background:var(--navy-50);display:flex;align-items:center;justify-content:center;font-size:.78rem}
+.cs.done{color:var(--green-700)}.cs.done .n{background:var(--green-600);color:#fff}
+.cs.active{color:var(--ink)}.cs.active .n{background:var(--ink);color:#fff}
+.cs .arw{color:var(--border);margin:0 4px}
+/* layout */
+.co-grid{display:grid;grid-template-columns:1fr 380px;gap:36px;padding:22px 0 70px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:26px;margin-bottom:18px}
+.card h2{font-size:1.2rem;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.card h2 .st{width:26px;height:26px;border-radius:50%;background:var(--green-50);color:var(--green-700);display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700}
+.card .desc{color:var(--slate);font-size:.88rem;margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{font-size:.82rem;font-weight:600;display:block;margin-bottom:6px}
+.input{width:100%;border:1.5px solid var(--border);border-radius:var(--r-btn);padding:12px 14px;font-family:var(--font-ui);font-size:.92rem;background:#fff;color:var(--ink)}
+.input:focus{outline:none;border-color:var(--green-500);box-shadow:0 0 0 3px rgba(30,158,92,.15)}
+.input.valid{border-color:var(--green-500);background:var(--green-50)}
+.field .ok{font-size:.76rem;color:var(--green-700);margin-top:5px;display:flex;align-items:center;gap:5px}
+.field .ok svg{width:13px;height:13px;stroke:var(--green-600);fill:none;stroke-width:2.4}
+.field .err{font-size:.76rem;color:var(--danger);margin-top:5px}
+.opt-row{display:flex;flex-direction:column;gap:10px}
+.radio{display:flex;gap:13px;align-items:flex-start;border:1.5px solid var(--border);border-radius:var(--r-btn);padding:14px 16px;cursor:pointer}
+.radio.on{border-color:var(--green-500);background:var(--green-50)}
+.radio .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex:none;margin-top:2px;position:relative}
+.radio.on .dot{border-color:var(--green-600)}.radio.on .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--green-600)}
+.radio .rt{flex:1}.radio b{font-size:.94rem}.radio p{font-size:.82rem;color:var(--slate)}
+.radio .rp{font-weight:700;white-space:nowrap}
+.paylogos{display:flex;gap:8px;margin-left:auto}
+.paylogos span{font-family:var(--font-mono);font-size:.68rem;font-weight:600;background:var(--navy-50);color:var(--ink);padding:3px 8px;border-radius:5px}
+/* summary */
+.osum{position:sticky;top:20px;align-self:start;background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden}
+.osum .h{padding:18px 22px;border-bottom:1px solid var(--border);font-weight:600}
+.oline{display:flex;gap:12px;padding:14px 22px;border-bottom:1px solid var(--border)}
+.oline img{width:52px;height:64px;object-fit:cover;border-radius:8px;background:var(--paper);flex:none}
+.oline h4{font-family:var(--font-ui);font-size:.9rem;font-weight:600}.oline .os{font-size:.78rem;color:var(--slate)}
+.oline .op{margin-left:auto;font-weight:700;font-size:.9rem}
+.osum .tot{padding:16px 22px}
+.osum .r{display:flex;justify-content:space-between;padding:6px 0;font-size:.88rem;color:var(--slate)}.osum .r b{color:var(--ink)}
+.osum .r.g{border-top:1px solid var(--border);margin-top:8px;padding-top:14px;font-size:1.05rem}.osum .r.g b{font-size:1.2rem}
+.terms{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:var(--slate);padding:0 22px 8px}
+.terms input{width:18px;height:18px;margin-top:2px;accent-color:var(--green-600)}
+.osum .foot{padding:0 22px 22px}
+/* confirmation CO6 */
+.confirm{max-width:640px;margin:0 auto;padding:60px 0 80px;text-align:center}
+.confirm .ok{width:78px;height:78px;border-radius:50%;background:var(--green-50);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+.confirm .ok svg{width:38px;height:38px;stroke:var(--green-600);fill:none;stroke-width:2.4}
+.confirm h1{font-size:2.2rem;margin-bottom:10px}
+.confirm p{color:var(--slate);max-width:46ch;margin:0 auto}
+.ordbox{display:flex;justify-content:center;gap:40px;background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:22px;margin:26px 0;text-align:left}
+.ordbox .k{font-size:.76rem;color:var(--slate);text-transform:uppercase;letter-spacing:.08em}
+.ordbox .v{font-family:var(--font-mono);font-weight:600;font-size:1.05rem;margin-top:4px}
+.confirm .cta{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.toggle-view{text-align:center;padding:14px 0 0}.toggle-view button{background:none;border:1px dashed var(--border);border-radius:999px;padding:7px 16px;font-size:.8rem;color:var(--slate);cursor:pointer;font-family:var(--font-ui)}
+footer.mini{text-align:center;padding:30px 0;color:var(--slate);font-size:.82rem;border-top:1px solid var(--border);background:#fff}
+@media(max-width:960px){.co-grid{grid-template-columns:1fr}.osum{position:static}.grid2{grid-template-columns:1fr}.ordbox{flex-direction:column;gap:16px;text-align:center}}
+</style>
+</head>
+<body>
+<header class="co"><div class="wrap bar">
+  <a class="brand" href="../index.html"><span class="mark"><svg class="loop" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="#0C2436"/><path d="M10 22V10h6a5 5 0 010 10h-4l6 6" stroke="#1E9E5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>KEYA</span><span class="sub">Knit Composite</span></a>
+  <div class="secure"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>Secure SSL checkout</div>
+</div></header>
+
+<!-- ============ CHECKOUT FLOW ============ -->
+<div id="flow" class="wrap narrow">
+  <div class="chk-steps">
+    <div class="cs done"><span class="n">✓</span>Cart</div><span class="arw">→</span>
+    <div class="cs active"><span class="n">2</span>Details</div><span class="arw">→</span>
+    <div class="cs"><span class="n">3</span>Shipping</div><span class="arw">→</span>
+    <div class="cs"><span class="n">4</span>Payment</div><span class="arw">→</span>
+    <div class="cs"><span class="n">5</span>Confirm</div>
+  </div>
+
+  <div class="co-grid">
+    <div>
+      <!-- CO1 contact / guest-or-account -->
+      <div class="card">
+        <h2><span class="st">1</span>Contact</h2>
+        <p class="desc">Already have an account? <a href="account.html" style="color:var(--green-700);font-weight:600">Sign in</a> for faster checkout.</p>
+        <div class="field"><label>Email address</label><input class="input valid" value="buyer@brand.com"><div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Order updates sent here</div></div>
+        <label class="terms" style="padding:0"><input type="checkbox">Email me about restocks &amp; new drops</label>
+      </div>
+
+      <!-- CO2 shipping address + validation -->
+      <div class="card">
+        <h2><span class="st">2</span>Shipping address</h2>
+        <div class="grid2">
+          <div class="field"><label>First name</label><input class="input" value="Anders"></div>
+          <div class="field"><label>Last name</label><input class="input" value="Møller"></div>
+        </div>
+        <div class="field"><label>Company (optional)</label><input class="input" value="Nordic Apparel AB"></div>
+        <div class="field"><label>Address</label><input class="input valid" value="Sveavägen 44"><div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Address verified</div></div>
+        <div class="grid2">
+          <div class="field"><label>City</label><input class="input" value="Stockholm"></div>
+          <div class="field"><label>Postal code</label><input class="input" value="111 34"></div>
+        </div>
+        <div class="field"><label>Country / region</label><select class="input"><option>Sweden</option><option>Germany</option><option>United Kingdom</option><option>United States</option></select></div>
+      </div>
+
+      <!-- CO3 shipping method -->
+      <div class="card">
+        <h2><span class="st">3</span>Shipping method</h2>
+        <p class="desc">Zone-based rates calculated for Sweden.</p>
+        <div class="opt-row shipmethods">
+          <label class="radio on"><span class="dot"></span><div class="rt"><b>Standard freight</b><p>7–10 business days · tracked</p></div><span class="rp tnum">$9.50</span></label>
+          <label class="radio"><span class="dot"></span><div class="rt"><b>Express air</b><p>3–4 business days · DHL</p></div><span class="rp tnum">$28.00</span></label>
+          <label class="radio"><span class="dot"></span><div class="rt"><b>Bulk / freight forwarder</b><p>For large orders — arrange via Quote</p></div><span class="rp">Quoted</span></label>
+        </div>
+      </div>
+
+      <!-- CO4 payment -->
+      <div class="card">
+        <h2><span class="st">4</span>Payment</h2>
+        <p class="desc">All transactions encrypted. <span style="color:var(--green-700);font-weight:600">PCI-DSS compliant.</span></p>
+        <div class="opt-row paymethods" style="margin-bottom:16px">
+          <label class="radio on"><span class="dot"></span><div class="rt"><b>Credit / debit card</b><p>Visa · Mastercard · Amex</p></div><span class="paylogos"><span>VISA</span><span>MC</span><span>AMEX</span></span></label>
+          <label class="radio"><span class="dot"></span><div class="rt"><b>Bank transfer (T/T)</b><p>For verified business buyers</p></div></label>
+        </div>
+        <div class="paycard">
+          <div class="field"><label>Card number</label><input class="input" placeholder="1234 5678 9012 3456"></div>
+          <div class="grid2">
+            <div class="field"><label>Expiry</label><input class="input" placeholder="MM / YY"></div>
+            <div class="field"><label>CVC</label><input class="input" placeholder="123"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CO5 order summary + place order -->
+    <aside class="osum">
+      <div class="h">Order summary · 2 items</div>
+      <div class="oline"><img src="/design/assets/product/tshirt-navy-v1.png" alt=""><div><h4>Heavyweight Crew Tee</h4><div class="os">Navy · L · Qty 1</div></div><div class="op tnum">$18.00</div></div>
+      <div class="oline"><img src="/design/assets/product/polo-green-v1.png" alt=""><div><h4>Piqué Polo Shirt</h4><div class="os">Sage · M · Qty 1</div></div><div class="op tnum">$24.00</div></div>
+      <div class="tot">
+        <div class="r"><span>Subtotal</span><b class="tnum">$42.00</b></div>
+        <div class="r"><span>Shipping</span><b class="tnum">$9.50</b></div>
+        <div class="r"><span>Tax (VAT)</span><b class="tnum">$3.36</b></div>
+        <div class="r g"><span>Total</span><b class="tnum">$54.86</b></div>
+      </div>
+      <label class="terms"><input type="checkbox" id="agree">I agree to the Terms of Sale, Privacy Policy and Shipping &amp; Returns.</label>
+      <div class="foot"><button class="btn btn-buy" style="width:100%" onclick="place()">Place order · $54.86</button></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ============ CO6 CONFIRMATION (hidden until placed) ============ -->
+<div id="done" class="wrap" style="display:none">
+  <div class="confirm">
+    <div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+    <h1>Thank you — your order is confirmed.</h1>
+    <p>A confirmation email is on its way. You can track fulfilment and shipping from your account.</p>
+    <div class="ordbox">
+      <div><div class="k">Order number</div><div class="v">KKC-2026-18342</div></div>
+      <div><div class="k">Est. delivery</div><div class="v">14–17 Jul 2026</div></div>
+      <div><div class="k">Total paid</div><div class="v">$54.86</div></div>
+    </div>
+    <div class="cta"><a class="btn btn-buy" href="account.html">Track my order</a><a class="btn btn-outline" href="catalogue.html">Continue shopping</a></div>
+  </div>
+</div>
+
+<div class="toggle-view wrap"><button onclick="toggleView()">◑ Preview toggle: checkout ⇄ confirmation state</button></div>
+
+<footer class="mini">© 2026 Keya Knit Composite · Secure checkout · Privacy · Terms</footer>
+
+<script>
+function bind(sel){document.querySelectorAll(sel+' .radio').forEach(r=>r.addEventListener('click',()=>{r.parentElement.querySelectorAll('.radio').forEach(x=>x.classList.remove('on'));r.classList.add('on');}));}
+bind('.shipmethods');bind('.paymethods');
+document.querySelectorAll('.paymethods .radio').forEach(r=>r.addEventListener('click',()=>{document.querySelector('.paycard').style.display=r.querySelector('b').textContent.includes('Card')?'block':'none';}));
+function place(){if(!document.getElementById('agree').checked){alert('Please agree to the Terms of Sale to continue.');return;}toggleView();}
+function toggleView(){const f=document.getElementById('flow'),d=document.getElementById('done');const showDone=d.style.display==='none';d.style.display=showDone?'block':'none';f.style.display=showDone?'none':'block';window.scrollTo({top:0,behavior:'smooth'});}
+</script>
+</body>
+</html>

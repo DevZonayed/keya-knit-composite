@@ -1,0 +1,54 @@
+/* Contact page-specific styles. Tokens & shared classes live in globals.css. */
+
+/* hero */
+.pg-contact .chero{background:var(--ink);color:#fff;padding:clamp(44px,6vw,72px) 0 clamp(60px,8vw,90px)}
+.pg-contact .chero .eyebrow{color:var(--green-500);font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.pg-contact .chero h1{color:#fff;font-size:clamp(2.1rem,4vw,3.1rem);margin:12px 0 12px;max-width:20ch}
+.pg-contact .chero p{color:#d6e0e6;max-width:56ch;font-size:1.05rem}
+
+/* main grid */
+.pg-contact .cwrap{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-top:-46px;padding-bottom:20px;position:relative;z-index:5}
+.pg-contact .formcard{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:30px;box-shadow:var(--shadow-md)}
+.pg-contact .formcard h2{font-size:1.4rem;margin-bottom:4px}
+.pg-contact .formcard .lede{color:var(--slate);font-size:.9rem;margin-bottom:22px}
+.pg-contact .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pg-contact .field{margin-bottom:15px}
+.pg-contact .field label{font-size:.82rem;font-weight:600;display:block;margin-bottom:6px}
+.pg-contact .input{width:100%;border:1.5px solid var(--border);border-radius:var(--r-btn);padding:12px 14px;font-family:var(--font-ui);font-size:.92rem;background:#fff;color:var(--ink)}
+.pg-contact .input:focus{outline:none;border-color:var(--green-500);box-shadow:0 0 0 3px rgba(30,158,92,.15)}
+.pg-contact textarea.input{resize:vertical;min-height:110px}
+.pg-contact .inqtype{display:flex;gap:8px;flex-wrap:wrap}
+.pg-contact .inqtype span{border:1.5px solid var(--border);border-radius:var(--r-btn);padding:8px 14px;font-size:.85rem;font-weight:500;cursor:pointer}
+.pg-contact .inqtype span.on{border-color:var(--ink);background:var(--ink);color:#fff}
+
+/* info side */
+.pg-contact .info{display:flex;flex-direction:column;gap:14px}
+.pg-contact .icard{background:#fff;border:1px solid var(--border);border-radius:var(--r-card);padding:20px;display:flex;gap:14px}
+.pg-contact .icard .ic{width:42px;height:42px;border-radius:10px;background:var(--green-50);flex:none;display:flex;align-items:center;justify-content:center}
+.pg-contact .icard .ic svg{width:21px;height:21px;stroke:var(--green-600);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pg-contact .icard h4{font-family:var(--font-ui);font-weight:600;font-size:.98rem}
+.pg-contact .icard p,.pg-contact .icard a{color:var(--slate);font-size:.9rem}
+.pg-contact .icard a:hover{color:var(--green-700)}
+
+/* map */
+.pg-contact .mapcard{border-radius:var(--r-card);overflow:hidden;border:1px solid var(--border);position:relative}
+.pg-contact .mapcard img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.pg-contact .mapcard .chip{position:absolute;left:16px;bottom:16px;background:rgba(12,36,54,.9);color:#fff;font-size:.8rem;font-weight:600;padding:9px 14px;border-radius:999px;display:flex;align-items:center;gap:8px}
+.pg-contact .mapcard .chip svg{width:15px;height:15px;stroke:var(--green-500);fill:none;stroke-width:2}
+
+/* RFQ CTA */
+.pg-contact .rfqcta{margin:50px 0 70px;background:linear-gradient(120deg,var(--ink),var(--navy-600));border-radius:var(--r-img);padding:clamp(30px,5vw,50px);display:grid;grid-template-columns:1.4fr .6fr;gap:30px;align-items:center;color:#fff}
+.pg-contact .rfqcta h2{color:#fff;font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:8px}
+.pg-contact .rfqcta p{color:#c2cfd7;max-width:48ch}
+.pg-contact .rfqcta .side{text-align:center;border-left:1px solid rgba(255,255,255,.15);padding-left:30px}
+.pg-contact .rfqcta .qr{width:120px;height:120px;background:#fff;border-radius:12px;margin:0 auto 12px;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);padding:12px;gap:3px}
+.pg-contact .rfqcta .qr i{background:var(--ink);border-radius:2px}
+.pg-contact .rfqcta .side span{font-size:.78rem;color:#c2cfd7}
+.pg-contact .rfqcta .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+
+@media(max-width:960px){
+  .pg-contact .cwrap{grid-template-columns:1fr;margin-top:-30px}
+  .pg-contact .grid2{grid-template-columns:1fr}
+  .pg-contact .rfqcta{grid-template-columns:1fr}
+  .pg-contact .rfqcta .side{border-left:none;border-top:1px solid rgba(255,255,255,.15);padding-left:0;padding-top:24px}
+}
